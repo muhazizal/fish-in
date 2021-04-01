@@ -15,3 +15,9 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+#app {
+  font-family: 'Montserrat', sans-serif;
+}
+</style>
