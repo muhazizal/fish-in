@@ -10,24 +10,28 @@
       </v-col>
       <v-col cols="7" class="d-flex align-end">
         <div>
-          <h4 class="font-weight-regular">{{ item.nama }}</h4>
+          <h4 class="text-subtitle-1 font-weight-medium">{{ item.nama }}</h4>
           <v-icon
+            small
             v-for="n in 5"
             :key="n.id"
             :class="{
               'orange--text text--lighten-1': n <= item.rating,
-              'grey--text text-lighten-1': n > item.rating,
+              'grey--text text--lighten-1': n > item.rating,
             }"
             >mdi-star</v-icon
           >
-          <small class="grey--text">({{ item.review }} review)</small>
+          <small class="text-caption grey--text">
+            ({{ item.review }}
+            review)
+          </small>
           <h5 class="font-weight-regular orange--text text--lighten-1">
             Rp {{ item.harga_kg }}/kg atau Rp {{ item.harga_ons }}/ons
           </h5>
         </div>
       </v-col>
       <v-col cols="1" class="d-flex align-center">
-        <v-icon color="grey">mdi-keyboard_arrow_right</v-icon>
+        <v-icon color="grey">mdi-chevron-right</v-icon>
       </v-col>
     </v-row>
   </div>
