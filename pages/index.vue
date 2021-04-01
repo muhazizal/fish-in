@@ -1,11 +1,11 @@
 <template>
-  <div>
-    <h1>Test</h1>
-  </div>
+  <div></div>
 </template>
 
 <script>
 export default {
-  name: 'HomePage',
+  beforeCreate() {
+    this.$router.push('/beranda')
+  },
 }
 </script>

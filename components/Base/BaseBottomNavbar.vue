@@ -1,12 +1,11 @@
 <template>
   <div>
-    <v-bottom-navigation color="primary" app>
+    <v-bottom-navigation color="primary" app grow>
       <v-btn
         v-for="(item, index) in links"
         :key="index"
         :to="item.link"
         class="pa-0"
-        max-width="44px"
       >
         <span>{{ item.name }}</span>
         <v-icon>{{ item.icon }}</v-icon>
@@ -21,19 +20,14 @@ export default {
   data: () => ({
     links: [
       {
-        name: 'Home',
-        link: '/',
+        name: 'Beranda',
+        link: '/beranda',
         icon: 'mdi-home',
       },
       {
         name: 'Category',
         link: '/category',
         icon: 'mdi-select-group',
-      },
-      {
-        name: 'Cart',
-        link: '/cart',
-        icon: 'mdi-shopping',
       },
       {
         name: 'Message',
@@ -49,5 +43,3 @@ export default {
   }),
 }
 </script>
-
-<style lang="scss" scoped></style>

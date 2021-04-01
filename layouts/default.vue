@@ -1,5 +1,6 @@
 <template>
   <v-app>
+    <base-top-navbar />
     <v-main>
       <v-container>
         <nuxt />
@@ -12,11 +13,10 @@
 <script>
 export default {
   components: {
+    BaseTopNavbar: () => import('@/components/Base/BaseTopNavbar'),
     BaseBottomNavbar: () => import('@/components/Base/BaseBottomNavbar'),
   },
-  data() {
-    return {}
-  },
+  middleware: 'auth',
 }
 </script>
 
@@ -26,7 +26,6 @@ export default {
 
   .container {
     height: 100%;
-    max-height: calc(100vh - 56px);
   }
 }
 </style>

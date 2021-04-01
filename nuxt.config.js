@@ -83,6 +83,10 @@ export default {
     },
   },
 
+  router: {
+    // base: '/bernada'
+  },
+
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
 }
