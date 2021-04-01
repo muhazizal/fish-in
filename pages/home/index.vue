@@ -1,12 +1,15 @@
 <template>
   <div>
-    <h1>Home Page</h1>
+    <home-carousel />
   </div>
 </template>
 
 <script>
 export default {
   name: 'BerandaPage',
+  components: {
+    HomeCarousel: () => import('@/components/Home/HomeCarousel'),
+  },
   head() {
     return {
       title: 'Beranda',
