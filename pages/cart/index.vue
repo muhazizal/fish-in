@@ -9,7 +9,7 @@ export default {
   name: 'CartPage',
   head() {
     return {
-      title: 'Cart',
+      title: 'Fish-in - Cart',
     }
   },
 }

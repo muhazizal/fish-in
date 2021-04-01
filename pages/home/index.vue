@@ -18,7 +18,7 @@ export default {
   },
   head() {
     return {
-      title: 'HomePage',
+      title: 'Fish-in - Home',
     }
   },
 }

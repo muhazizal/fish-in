@@ -9,7 +9,7 @@ export default {
   name: 'MessagePage',
   head() {
     return {
-      title: 'Message',
+      title: 'Fish-in - Message',
     }
   },
 }

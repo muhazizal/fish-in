@@ -9,7 +9,7 @@ export default {
   name: 'CategoryPage',
   head() {
     return {
-      title: 'Category',
+      title: 'Fish-in - Category',
     }
   },
 }
