@@ -17,6 +17,7 @@ export default {
       { hid: 'description', name: 'description', content: '' },
     ],
     link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       {
         rel: 'preconnect',
         href: 'https://fonts.gstatic.com',
@@ -60,6 +61,12 @@ export default {
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
+      name: 'Fish-in',
+      short_name: 'Fish-in',
+      description:
+        'Fish-in is e-commerce mobile web application that user can buy or sell their fish products',
+      background_color: '#3086F7',
+      theme_color: '#3086F7',
       lang: 'en',
     },
   },
@@ -84,6 +91,7 @@ export default {
   },
 
   router: {
+    trailingSlash: false,
     extendRoutes(routes, resolve) {
       routes.push({
         name: 'custom',

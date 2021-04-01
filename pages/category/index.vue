@@ -70,7 +70,7 @@ export default {
   }),
   head() {
     return {
-      title: 'Category',
+      title: 'Fish-in - Category',
     }
   },
 }
