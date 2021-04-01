@@ -2,7 +2,7 @@
   <v-form v-model="valid">
     <v-container>
       <v-row>
-        <v-col cols="12" class="pb-0">
+        <v-col cols="12">
           <h2 class="text-subtitle-1 font-weight-medium">
             Search Your Favorite Fish
           </h2>

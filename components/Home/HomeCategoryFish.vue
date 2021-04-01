@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container class="pb-6">
     <v-row class="category">
       <v-col cols="12 pb-0">
         <h2 class="text-subtitle-1 font-weight-medium">Fish Category</h2>
@@ -28,6 +28,5 @@ export default {
 .category {
   box-shadow: 0px 0px 8px 2px rgb(219, 219, 219);
   border-radius: 5px;
-  height: 100%;
 }
 </style>
