@@ -1,5 +1,6 @@
 <template>
   <div>
+    <search></search>
     <v-row v-for="item in items" :key="item.id" no-gutters class="mb-5">
       <v-col class="d-flex align-end" cols="4">
         <img
@@ -8,7 +9,7 @@
           src="https://picsum.photos/id/11/500/300"
         />
       </v-col>
-      <v-col cols="7" class="d-flex align-end">
+      <v-col cols="7" class="d-flex align-start">
         <div>
           <h4 class="text-subtitle-1 font-weight-medium">{{ item.nama }}</h4>
           <v-icon
@@ -26,7 +27,7 @@
             review)
           </small>
           <h5 class="font-weight-regular orange--text text--lighten-1">
-            Rp {{ item.harga_kg }}/kg atau Rp {{ item.harga_ons }}/ons
+            Rp {{ item.harga_kg }}/kg | Rp {{ item.harga_ons }}/ons
           </h5>
         </div>
       </v-col>
@@ -40,6 +41,9 @@
 <script>
 export default {
   name: 'CategoryPage',
+  components: {
+    Search: () => import('@/components/Base/Search'),
+  },
   data: () => ({
     items: [
       {
@@ -78,7 +82,7 @@ export default {
 
 <style lang="sass" scoped>
 .img-category
-  width : 110px,
-  height : 100px,
+  width : 100px,
+  height : 75px,
   border-radius : 5px,
 </style>
