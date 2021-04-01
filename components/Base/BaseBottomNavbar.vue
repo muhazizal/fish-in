@@ -20,8 +20,8 @@ export default {
   data: () => ({
     links: [
       {
-        name: 'Beranda',
-        link: '/beranda',
+        name: 'Home',
+        link: '/home',
         icon: 'mdi-home',
       },
       {
