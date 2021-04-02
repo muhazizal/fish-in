@@ -31,7 +31,7 @@ export default {
     discountedPriceStyle() {
       return this.item.discountedPrice
         ? 'text-decoration-line-through grey--text'
-        : 'pb-3 orange--text'
+        : 'pb-3'
     },
   },
 }
