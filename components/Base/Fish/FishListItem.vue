@@ -6,19 +6,21 @@
         {{ item.name }}
       </v-card-title>
       <v-card-subtitle class="ma-0 px-3 py-1" :class="discountedPriceStyle">
-        {{ item.price }}/kg
+        {{ convertedPrice }}/kg
       </v-card-subtitle>
       <v-card-subtitle
         v-if="item.discountedPrice"
         class="ma-0 px-3 pt-0 pb-3 orange--text"
       >
-        {{ item.discountedPrice }}/kg
+        {{ convertedDiscountPrice }}/kg
       </v-card-subtitle>
     </v-card>
   </div>
 </template>
 
 <script>
+import { rupiahCurrency } from '@/utils/currency'
+
 export default {
   name: 'FishListItem',
   props: {
@@ -28,6 +30,12 @@ export default {
     },
   },
   computed: {
+    convertedPrice() {
+      return rupiahCurrency(this.item.price, 0, 'Rp.', '.')
+    },
+    convertedDiscountPrice() {
+      return rupiahCurrency(this.item.discountedPrice, 0, 'Rp.', '.')
+    },
     discountedPriceStyle() {
       return this.item.discountedPrice
         ? 'text-decoration-line-through grey--text'
