@@ -2,7 +2,6 @@ export const rupiahCurrency = (value, rem, currency, splitter) => {
   let result = ''
   value = value.toString()
   const index = value.length
-  console.log(value, index)
 
   // If value length is 4/5/6
   if (index === 4 || index === 5 || index === 6) {
