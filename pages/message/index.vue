@@ -1,5 +1,8 @@
 <template>
-  <user-list :messages="messages" />
+  <v-container class="pa-0">
+    <base-search />
+    <user-list :messages="messages" />
+  </v-container>
 </template>
 
 <script>
@@ -7,6 +10,7 @@ export default {
   name: 'MessagePage',
   components: {
     UserList: () => import('@/components/Base/User/UserList'),
+    BaseSearch: () => import('@/components/Base/BaseSearch'),
   },
   data: () => ({
     messages: [

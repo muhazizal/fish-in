@@ -1,6 +1,6 @@
 <template>
   <div>
-    <search></search>
+    <base-search />
     <v-row v-for="item in items" :key="item.id" no-gutters class="mb-5">
       <v-col class="d-flex align-end" cols="4">
         <img
@@ -13,9 +13,9 @@
         <div>
           <h4 class="text-subtitle-1 font-weight-medium">{{ item.nama }}</h4>
           <v-icon
-            small
             v-for="n in 5"
             :key="n.id"
+            small
             :class="{
               'orange--text text--lighten-1': n <= item.rating,
               'grey--text text--lighten-1': n > item.rating,
@@ -42,7 +42,7 @@
 export default {
   name: 'CategoryPage',
   components: {
-    Search: () => import('@/components/Base/Search'),
+    BaseSearch: () => import('@/components/Base/BaseSearch'),
   },
   data: () => ({
     items: [
