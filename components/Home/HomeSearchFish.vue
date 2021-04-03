@@ -10,24 +10,42 @@
 
         <v-col cols="6" class="pt-0">
           <v-text-field
-            v-model="name"
-            :rules="nameRules"
+            v-model="price"
+            type="number"
             label="Price"
-            required
             class="pt-0"
-            prepend-inner-icon="mdi-currency-usd"
+            prefix="Rp."
+            clearable
+            hide-details
+            single-line
           ></v-text-field>
         </v-col>
 
         <v-col cols="6" class="pt-0">
           <v-text-field
-            v-model="email"
-            :rules="emailRules"
+            v-model="quantity"
+            type="number"
             label="Quantity"
-            required
+            class="pt-0"
+            prepend-inner-icon="mdi-cart-plus"
+            hide-details
+            single-line
+            clearable
+          ></v-text-field>
+        </v-col>
+
+        <v-col cols="12" class="pt-0 mb-3">
+          <v-select
+            v-model="category"
+            :items="categoryOptions"
+            menu-props="auto"
+            label="Category"
             class="pt-0"
             prepend-inner-icon="mdi-fish"
-          ></v-text-field>
+            clearable
+            hide-details
+            single-line
+          ></v-select>
         </v-col>
 
         <v-col cols="12" class="pt-0">
@@ -45,16 +63,10 @@ export default {
   name: 'HomeSearchFish',
   data: () => ({
     valid: false,
-    name: '',
-    nameRules: [
-      (v) => !!v || 'Name is required',
-      (v) => v.length <= 10 || 'Name must be less than 10 characters',
-    ],
-    email: '',
-    emailRules: [
-      (v) => !!v || 'E-mail is required',
-      (v) => /.+@.+/.test(v) || 'E-mail must be valid',
-    ],
+    price: null,
+    quantity: null,
+    category: '',
+    categoryOptions: ['Fresh Fish', 'Seafood'],
   }),
 }
 </script>

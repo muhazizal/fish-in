@@ -8,16 +8,14 @@
         {{ pageTitle }}
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn
+      <router-link
         v-for="(item, index) in links"
         :key="index"
         :to="item.link"
-        x-small
-        text
-        class="px-1 ma-0"
+        class="pl-3"
       >
         <v-icon>{{ item.icon }}</v-icon>
-      </v-btn>
+      </router-link>
     </v-app-bar>
   </div>
 </template>

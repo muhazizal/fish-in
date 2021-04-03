@@ -22,8 +22,6 @@ export default {
 
 <style lang="scss" scoped>
 #app {
-  font-family: 'Montserrat', sans-serif;
-
   .container {
     height: 100%;
   }
