@@ -37,6 +37,19 @@ export default {
         ]
       }
 
+      if (path === 'category') {
+        return [
+          {
+            name: 'Proses',
+            method: async () => await this.handleOnClickProses(),
+          },
+          {
+            name: 'Selesai',
+            method: async () => await this.handleOnClickSelesai(),
+          },
+        ]
+      }
+
       return false
     },
   },
@@ -48,6 +61,14 @@ export default {
     },
     handleOnClickCompleted() {
       console.log('completed')
+      // await this.$store.dispatch('message/fetchCompleted')
+    },
+    handleOnClickProses() {
+      console.log('Proses')
+      // await this.$store.dispatch('message/fetchCompleted')
+    },
+    handleOnClickSelesai() {
+      console.log('Selesai')
       // await this.$store.dispatch('message/fetchCompleted')
     },
   },
