@@ -20,10 +20,4 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-#app {
-  .container {
-    height: 100%;
-  }
-}
-</style>
+<style lang="scss" scoped></style>

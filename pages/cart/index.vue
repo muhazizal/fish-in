@@ -1,6 +1,6 @@
 <template>
   <div>
-    <search></search>
+    <base-search />
     <fish-list-cart :items="listPesanan"></fish-list-cart>
   </div>
 </template>
@@ -9,7 +9,7 @@
 export default {
   name: 'CartPage',
   components: {
-    Search: () => import('@/components/Base/Search'),
+    BaseSearch: () => import('@/components/Base/BaseSearch'),
     FishListCart: () => import('@/components/Base/Fish/FishListCart'),
   },
   data: () => ({}),
