@@ -1,16 +1,16 @@
 <template>
-  <v-col v-if="getRoutes" cols="12" class="d-flex justify-center">
+  <v-col v-if="getOptions" cols="12" class="d-flex justify-center">
     <v-container class="pa-0">
-      <!-- TODO: add dynamic class to route v-btn -->
+      <!-- TODO: add dynamic class to route v-btn on active class -->
       <v-btn
-        v-for="(route, index) in getRoutes"
+        v-for="(option, index) in getOptions"
         :key="index"
-        :to="route.link"
         width="50%"
         depressed
         tile
+        @click="option.method"
       >
-        {{ route.name }}
+        {{ option.name }}
       </v-btn>
     </v-container>
   </v-col>
@@ -20,7 +20,7 @@
 export default {
   name: 'FishTabOptions',
   computed: {
-    getRoutes() {
+    getOptions() {
       const path = this.$route.fullPath.substr(1)
 
       // NOTE: if you want to add another link by route, inject here in the next if statement
@@ -28,16 +28,27 @@ export default {
         return [
           {
             name: 'Latest',
-            link: '/message/latest',
+            method: async () => await this.handleOnClickLatest(),
           },
           {
             name: 'Completed',
-            link: '/message/completed',
+            method: async () => await this.handleOnClickCompleted(),
           },
         ]
       }
 
       return false
+    },
+  },
+  methods: {
+    // TODO: add async await function here
+    handleOnClickLatest() {
+      console.log('latest')
+      // await this.$store.dispatch('message/fetchLatest')
+    },
+    handleOnClickCompleted() {
+      console.log('completed')
+      // await this.$store.dispatch('message/fetchCompleted')
     },
   },
 }
