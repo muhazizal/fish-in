@@ -1,7 +1,8 @@
 <template>
   <v-container class="pa-0">
     <dialog-profile />
-    <profile-account />
+    <profile-account-info />
+    <profile-bookmark />
   </v-container>
 </template>
 
@@ -10,7 +11,8 @@ export default {
   name: 'ProfilePage',
   components: {
     DialogProfile: () => import('@/components/Profile/Dialog/DialogProfile'),
-    ProfileAccount: () => import('@/components/Profile/ProfileAccount'),
+    ProfileAccountInfo: () => import('@/components/Profile/ProfileAccountInfo'),
+    ProfileBookmark: () => import('@/components/Profile/ProfileBookmark'),
   },
   head() {
     return {

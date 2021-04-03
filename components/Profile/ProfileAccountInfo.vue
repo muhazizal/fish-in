@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  name: 'ProfileAccount',
+  name: 'ProfileAccountInfo',
   components: {
     DialogUsername: () => import('./Dialog/DialogUsername'),
     DialogPassword: () => import('./Dialog/DialogPassword'),
