@@ -13,7 +13,7 @@
             v-model="price"
             type="number"
             label="Price"
-            class="pt-0"
+            class="pt-0 grey--text text--darken-2"
             prefix="Rp."
             clearable
             hide-details
