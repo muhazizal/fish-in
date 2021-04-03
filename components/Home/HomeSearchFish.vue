@@ -18,7 +18,7 @@
             clearable
             hide-details
             single-line
-          ></v-text-field>
+          />
         </v-col>
 
         <v-col cols="6" class="pt-0">
@@ -31,7 +31,7 @@
             hide-details
             single-line
             clearable
-          ></v-text-field>
+          />
         </v-col>
 
         <v-col cols="12" class="pt-0 mb-3">
@@ -45,7 +45,7 @@
             clearable
             hide-details
             single-line
-          ></v-select>
+          />
         </v-col>
 
         <v-col cols="12" class="pt-0">
