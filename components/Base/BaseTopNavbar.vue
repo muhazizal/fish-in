@@ -44,8 +44,15 @@ export default {
   }),
   computed: {
     pageTitle() {
-      return this.$route.fullPath.substr(1)
+      const fullPath = this.$route.fullPath.substr(1)
+      if (fullPath.includes('profile')) {
+        return 'profile'
+      }
+      return fullPath
     },
+  },
+  created() {
+    console.log(this.$route)
   },
 }
 </script>
