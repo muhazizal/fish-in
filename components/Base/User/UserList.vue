@@ -1,10 +1,11 @@
 <template>
   <div>
-    <v-list three-line>
+    <v-list>
       <user-list-item
         v-for="(message, index) in messages"
         :key="index"
         :message="message"
+        class="my-1"
       />
     </v-list>
   </div>

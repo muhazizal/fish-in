@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-form class="py-2">
+    <v-form>
       <v-text-field
         v-model="search"
         solo
