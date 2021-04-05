@@ -12,7 +12,7 @@
             </v-badge>
           </div>
           <v-btn text depressed plain small v-bind="attrs" v-on="on">
-            <v-icon>mdi-chevron-right</v-icon>
+            <v-icon color="grey">mdi-chevron-right</v-icon>
           </v-btn>
         </v-container>
       </template>

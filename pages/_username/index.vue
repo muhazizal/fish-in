@@ -3,6 +3,14 @@
     <dialog-profile />
     <profile-account-info />
     <profile-bookmark />
+    <profile-more-info />
+    <v-row>
+      <v-col cols="12" class="px-4 pt-0">
+        <v-btn large elevation="2" color="white" class="red--text" width="100%">
+          Keluar
+        </v-btn>
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 
@@ -13,6 +21,7 @@ export default {
     DialogProfile: () => import('@/components/Profile/Dialog/DialogProfile'),
     ProfileAccountInfo: () => import('@/components/Profile/ProfileAccountInfo'),
     ProfileBookmark: () => import('@/components/Profile/ProfileBookmark'),
+    ProfileMoreInfo: () => import('@/components/Profile/ProfileMoreInfo'),
   },
   head() {
     return {
