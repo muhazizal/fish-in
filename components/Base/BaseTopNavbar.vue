@@ -44,13 +44,12 @@ export default {
   }),
   computed: {
     pageTitle() {
-      return 'Title'
-      // const name = this.$route.name
-      // if (name && name.includes('profile')) {
-      //   return 'profile'
-      // } else {
-      //   return name
-      // }
+      const name = this.$route.name
+      if (name && name.includes('profile')) {
+        return 'profile'
+      } else {
+        return name
+      }
     },
   },
 }

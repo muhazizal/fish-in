@@ -25,7 +25,7 @@ export default {
   },
   head() {
     return {
-      title: 'Profile',
+      title: 'Fish-In Profile',
     }
   },
 }
