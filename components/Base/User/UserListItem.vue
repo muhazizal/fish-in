@@ -10,7 +10,7 @@
         <v-img :src="message.img" />
       </v-list-item-avatar>
       <v-list-item-content class="align-start">
-        <v-list-item-title class="mb-0">
+        <v-list-item-title class="mb-2">
           <span class="font-weight-medium">{{ message.sender }}</span>
           <span class="ml-2 green--text">{{ message.date }}</span>
         </v-list-item-title>
