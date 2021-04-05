@@ -2,7 +2,7 @@
   <div>
     <home-carousel />
     <home-search-fish />
-    <home-category-fish />
+    <home-fish-category />
     <home-fish-list />
   </div>
 </template>
@@ -13,7 +13,7 @@ export default {
   components: {
     HomeCarousel: () => import('@/components/Home/HomeCarousel'),
     HomeSearchFish: () => import('@/components/Home/HomeSearchFish'),
-    HomeCategoryFish: () => import('@/components/Home/HomeCategoryFish'),
+    HomeFishCategory: () => import('@/components/Home/HomeFishCategory'),
     HomeFishList: () => import('@/components/Home/HomeFishList'),
   },
   head() {

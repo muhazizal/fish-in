@@ -5,12 +5,22 @@
         <h2 class="text-subtitle-1 font-weight-medium">Fish Category</h2>
       </v-col>
       <v-col cols="6">
-        <v-btn color="primary" large width="100%" to="/fresh-fish">
+        <v-btn
+          color="primary"
+          large
+          width="100%"
+          :to="getRouteCategory('ikan-tawar')"
+        >
           Fresh Water
         </v-btn>
       </v-col>
       <v-col cols="6">
-        <v-btn color="primary" large width="100%" to="/seafood">
+        <v-btn
+          color="primary"
+          large
+          width="100%"
+          :to="getRouteCategory('ikan-laut')"
+        >
           Sea Water
         </v-btn>
       </v-col>
@@ -20,7 +30,12 @@
 
 <script>
 export default {
-  name: 'HomeCategoryFish',
+  name: 'HomeFishCategory',
+  methods: {
+    getRouteCategory(filter) {
+      return `/category?filter=${filter}`
+    },
+  },
 }
 </script>
 
