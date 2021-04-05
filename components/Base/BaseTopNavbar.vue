@@ -32,19 +32,25 @@ export default {
     links: [
       {
         name: 'Cart',
-        link: 'cart',
+        link: '/cart',
         icon: 'mdi-shopping',
       },
       {
         name: 'Notification',
-        link: 'notification',
+        link: '/',
         icon: 'mdi-bell',
       },
     ],
   }),
   computed: {
     pageTitle() {
-      return this.$route.fullPath.substr(1)
+      return 'Title'
+      // const name = this.$route.name
+      // if (name && name.includes('profile')) {
+      //   return 'profile'
+      // } else {
+      //   return name
+      // }
     },
   },
 }

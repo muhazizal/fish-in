@@ -36,7 +36,7 @@ export default {
       },
       {
         name: 'Profile',
-        link: '/:username',
+        link: '/profile/:username',
         icon: 'mdi-account',
       },
     ],

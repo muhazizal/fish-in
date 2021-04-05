@@ -50,6 +50,19 @@ export default {
         ]
       }
 
+      if (path === 'cart') {
+        return [
+          {
+            name: 'Ikan air Tawar',
+            method: async () => await this.handleOnClickTawar(),
+          },
+          {
+            name: 'Ikan Air Laut',
+            method: async () => await this.handleOnClickLaut(),
+          },
+        ]
+      }
+
       return false
     },
   },
@@ -69,6 +82,14 @@ export default {
     },
     handleOnClickSelesai() {
       console.log('Selesai')
+      // await this.$store.dispatch('message/fetchCompleted')
+    },
+    handleOnClickTawar() {
+      console.log('Tawar')
+      // await this.$store.dispatch('message/fetchCompleted')
+    },
+    handleOnClickLaut() {
+      console.log('Laut')
       // await this.$store.dispatch('message/fetchCompleted')
     },
   },
