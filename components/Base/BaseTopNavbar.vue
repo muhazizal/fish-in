@@ -47,12 +47,10 @@ export default {
       const name = this.$route.name
       if (name && name.includes('profile')) {
         return 'profile'
+      } else {
+        return name
       }
-      return this.$route.name
     },
-  },
-  mounted() {
-    console.log(this.$route)
   },
 }
 </script>
