@@ -3,8 +3,8 @@
     <v-form>
       <v-text-field
         v-model="search"
+        :label="label"
         solo
-        label="Search"
         prepend-inner-icon="mdi-magnify"
         clearable
         hide-details
@@ -17,6 +17,12 @@
 <script>
 export default {
   name: 'BaseSearch',
+  props: {
+    label: {
+      type: String,
+      default: '',
+    },
+  },
   data: () => ({
     // valid: false,
     search: '',

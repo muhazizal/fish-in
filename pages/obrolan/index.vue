@@ -1,6 +1,6 @@
 <template>
   <v-container class="pa-0">
-    <base-search />
+    <base-search :label="searchLabel" />
     <user-list :messages="messages" />
   </v-container>
 </template>
@@ -13,11 +13,12 @@ export default {
     BaseSearch: () => import('@/components/Base/BaseSearch'),
   },
   data: () => ({
+    searchLabel: 'Cari Obrolan',
     messages: [
       {
         img: 'https://cdn.vuetifyjs.com/images/lists/1.jpg',
         sender: 'Apink',
-        content: 'Apink Sayang Haris',
+        content: 'Gamers ganteng kayangan',
         date: '4 April 2021',
       },
       {
@@ -42,7 +43,14 @@ export default {
   }),
   head() {
     return {
-      title: 'Fish-in - Message',
+      title: 'Obrolan',
+      meta: [
+        {
+          hid: 'obrolan',
+          name: 'obrolan',
+          content: 'Halaman obrolan Fish-In',
+        },
+      ],
     }
   },
 }

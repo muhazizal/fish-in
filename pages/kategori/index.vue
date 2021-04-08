@@ -1,6 +1,6 @@
 <template>
   <div>
-    <base-search class="mb-4" />
+    <base-search class="mb-4" :label="searchLabel" />
     <fish-list-category :items="listCategory" />
   </div>
 </template>
@@ -11,6 +11,11 @@ export default {
   components: {
     BaseSearch: () => import('@/components/Base/BaseSearch'),
     FishListCategory: () => import('@/components/Base/Fish/FishListCategory'),
+  },
+  data() {
+    return {
+      searchLabel: 'Cari Ikan',
+    }
   },
   head() {
     return {

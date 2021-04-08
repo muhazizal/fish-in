@@ -30,8 +30,8 @@ export default {
         icon: 'mdi-select-group',
       },
       {
-        name: 'Message',
-        link: '/message',
+        name: 'Obrolan',
+        link: '/obrolan',
         icon: 'mdi-message',
       },
       {

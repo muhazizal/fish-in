@@ -21,43 +21,43 @@ export default {
   name: 'FishTabOptions',
   computed: {
     getOptions() {
-      const path = this.$route.fullPath.substr(1)
+      const routeName = this.$route.name
 
       // NOTE: if you want to add another link by route, inject here in the next if statement
-      if (path === 'message') {
+      if (routeName === 'obrolan') {
         return [
           {
-            name: 'Latest',
+            name: 'Terbaru',
             method: async () => await this.handleOnClickLatest(),
           },
           {
-            name: 'Completed',
+            name: 'Sudah Terbaca',
             method: async () => await this.handleOnClickCompleted(),
           },
         ]
       }
 
-      if (path === 'category') {
+      if (routeName === 'kategori') {
         return [
           {
-            name: 'Proses',
+            name: 'Air Tawar',
             method: async () => await this.handleOnClickProses(),
           },
           {
-            name: 'Selesai',
+            name: 'Air Laut',
             method: async () => await this.handleOnClickSelesai(),
           },
         ]
       }
 
-      if (path === 'cart') {
+      if (routeName === 'pesanan') {
         return [
           {
-            name: 'Ikan air Tawar',
+            name: 'Proses',
             method: async () => await this.handleOnClickTawar(),
           },
           {
-            name: 'Ikan Air Laut',
+            name: 'Selesai',
             method: async () => await this.handleOnClickLaut(),
           },
         ]
