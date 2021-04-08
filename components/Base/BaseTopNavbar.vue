@@ -31,11 +31,6 @@ export default {
   data: () => ({
     links: [
       {
-        name: 'Pesanan',
-        link: '/pesanan',
-        icon: 'mdi-shopping',
-      },
-      {
         name: 'Notification',
         link: '/',
         icon: 'mdi-bell',
