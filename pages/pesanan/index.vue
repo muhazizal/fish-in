@@ -1,6 +1,6 @@
 <template>
   <div>
-    <base-search />
+    <base-search class="mb-4" :label="searchLabel" />
     <fish-list-cart :items="listPesanan"></fish-list-cart>
   </div>
 </template>
@@ -12,10 +12,19 @@ export default {
     BaseSearch: () => import('@/components/Base/BaseSearch'),
     FishListCart: () => import('@/components/Base/Fish/FishListCart'),
   },
-  data: () => ({}),
+  data: () => ({
+    searchLabel: 'Cari Pesanan',
+  }),
   head() {
     return {
-      title: 'Fish-in - Cart',
+      title: 'Pesanan',
+      meta: [
+        {
+          hid: 'pesanan',
+          name: 'pesanan',
+          content: 'Halaman pesanan Fish-In',
+        },
+      ],
     }
   },
   computed: {

@@ -25,7 +25,7 @@
             ({{ item.review }}
             review)
           </small>
-          <h5 class="font-weight-regular orange--text text--lighten-1">
+          <h5 class="font-weight-regular grey--text text--darken-1">
             {{ convertedHargaKg }}/kg | {{ convertedHargaOns }}/ons
           </h5>
         </div>

@@ -31,8 +31,8 @@ export default {
   data: () => ({
     links: [
       {
-        name: 'Cart',
-        link: '/cart',
+        name: 'Pesanan',
+        link: '/pesanan',
         icon: 'mdi-shopping',
       },
       {
