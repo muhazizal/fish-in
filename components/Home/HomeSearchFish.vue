@@ -4,7 +4,7 @@
       <v-row>
         <v-col cols="12">
           <h2 class="text-subtitle-1 font-weight-medium">
-            Search Your Favorite Fish
+            Cari Ikan Berdasarkan Budget
           </h2>
         </v-col>
 
@@ -12,7 +12,7 @@
           <v-text-field
             v-model="price"
             type="number"
-            label="Price"
+            label="Harga"
             class="pt-0 grey--text text--darken-2"
             prefix="Rp."
             clearable
@@ -25,7 +25,7 @@
           <v-text-field
             v-model="quantity"
             type="number"
-            label="Quantity"
+            label="Jumlah"
             class="pt-0"
             prepend-inner-icon="mdi-cart-plus"
             hide-details
@@ -39,7 +39,7 @@
             v-model="category"
             :items="categoryOptions"
             menu-props="auto"
-            label="Category"
+            label="Kategori"
             class="pt-0"
             prepend-inner-icon="mdi-fish"
             clearable
@@ -50,7 +50,7 @@
 
         <v-col cols="12" class="pt-0">
           <v-btn color="#5BC695" depressed width="100%" class="white--text">
-            Search Fish
+            Cari Ikan
           </v-btn>
         </v-col>
       </v-row>
@@ -66,7 +66,7 @@ export default {
     price: null,
     quantity: null,
     category: '',
-    categoryOptions: ['Fresh Fish', 'Seafood'],
+    categoryOptions: ['Air Tawar', 'Air Laut'],
   }),
 }
 </script>

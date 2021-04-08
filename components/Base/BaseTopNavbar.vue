@@ -45,8 +45,8 @@ export default {
   computed: {
     pageTitle() {
       const name = this.$route.name
-      if (name && name.includes('profile')) {
-        return 'profile'
+      if (name && name.includes('profil')) {
+        return 'profil'
       } else {
         return name
       }

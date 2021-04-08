@@ -5,7 +5,7 @@
 <script>
 export default {
   beforeCreate() {
-    this.$router.push('/home')
+    this.$router.replace('/beranda')
   },
 }
 </script>

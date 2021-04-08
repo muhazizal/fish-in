@@ -2,7 +2,7 @@
   <v-container class="pb-6">
     <v-row class="category">
       <v-col cols="12 pb-0">
-        <h2 class="text-subtitle-1 font-weight-medium">Fish Category</h2>
+        <h2 class="text-subtitle-1 font-weight-medium">Kategori Ikan</h2>
       </v-col>
       <v-col cols="6">
         <v-btn
@@ -11,7 +11,7 @@
           width="100%"
           :to="getRouteCategory('ikan-tawar')"
         >
-          Fresh Water
+          Ikan Tawar
         </v-btn>
       </v-col>
       <v-col cols="6">
@@ -21,7 +21,7 @@
           width="100%"
           :to="getRouteCategory('ikan-laut')"
         >
-          Sea Water
+          Ikan Laut
         </v-btn>
       </v-col>
     </v-row>

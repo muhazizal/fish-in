@@ -18,7 +18,14 @@ export default {
   },
   head() {
     return {
-      title: 'Fish-in - Home',
+      title: 'Beranda',
+      meta: [
+        {
+          hid: 'beranda',
+          name: 'beranda',
+          content: 'Halaman beranda Fish-In',
+        },
+      ],
     }
   },
 }

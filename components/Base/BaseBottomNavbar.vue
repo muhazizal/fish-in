@@ -20,8 +20,8 @@ export default {
   data: () => ({
     links: [
       {
-        name: 'Home',
-        link: '/home',
+        name: 'Beranda',
+        link: '/beranda',
         icon: 'mdi-home',
       },
       {
@@ -35,8 +35,8 @@ export default {
         icon: 'mdi-message',
       },
       {
-        name: 'Profile',
-        link: '/profile/:username',
+        name: 'Profil',
+        link: '/profil/:username',
         icon: 'mdi-account',
       },
     ],

@@ -12,8 +12,8 @@ export default {
     FishList: () => import('@/components/Base/Fish/FishList'),
   },
   data: () => ({
-    priceTitle: 'Best Price',
-    fishTitle: 'Latest',
+    priceTitle: 'Harga Terbaik',
+    fishTitle: 'Produk Terbaru',
   }),
   computed: {
     bestPriceProducts() {

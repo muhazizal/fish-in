@@ -25,7 +25,14 @@ export default {
   },
   head() {
     return {
-      title: 'Fish-In Profile',
+      title: 'Profil',
+      meta: [
+        {
+          hid: 'profil',
+          name: 'profil',
+          content: 'Halaman profil user Fish-In',
+        },
+      ],
     }
   },
 }
