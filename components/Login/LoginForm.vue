@@ -1,9 +1,17 @@
 <template>
   <v-form ref="form" v-model="valid" lazy-validation>
+    <div class="mt-3">
+      <p class="font-weight-medium">Selamat Datang di Fish-in</p>
+      <p class="ftext-lowercase">
+        Silahkan masuk atau daftar akun terlebih dahulu
+      </p>
+    </div>
+
     <v-text-field
-      v-model="email"
-      :rules="emailRules"
-      label="E-mail"
+      v-model="username"
+      :rules="usernameRules"
+      label="Username"
+      prepend-inner-icon="mdi-account"
       required
     ></v-text-field>
 
@@ -11,23 +19,39 @@
       v-model="password"
       :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
       :rules="passwordRules"
-      :type="show1 ? 'text' : 'password'"
+      :type="(show1 ? 'text' : 'mdi-account', 'password')"
       name="input-10-1"
       label="Password"
+      prepend-inner-icon="mdi-lock"
       hint="At least 8 characters"
       @click:append="show1 = !show1"
     ></v-text-field>
 
-    <div class="">
-      <v-btn :disabled="!valid" color="success" class="mr-4" @click="submit">
-        Login
+    <div class="mt-3">
+      <router-link to="" class="text-decoration-none">
+        <p class="text-right">Lupa Password?</p>
+      </router-link>
+    </div>
+
+    <div class="text-center">
+      <v-btn
+        class="ma-2"
+        large
+        :loading="loading"
+        :disabled="loading"
+        color="primary"
+        @click="loader = 'loading'"
+      >
+        Masuk
       </v-btn>
     </div>
 
-    <div class="mt-3">
-      <router-link to="/login" class="text-decoration-none">
-        Don't have any account ? Register Here
-      </router-link>
+    <div class="mt-3 text-center">
+      <p>Belum punya akun?</p>
+    </div>
+
+    <div class="text-center">
+      <v-btn class="ma-2" large outlined color="primary"> Daftar </v-btn>
     </div>
   </v-form>
 </template>
@@ -36,11 +60,12 @@ export default {
   name: 'LoginForm',
   data: () => ({
     valid: true,
-    email: '',
-    emailRules: [
-      (v) => !!v || 'E-mail is required',
-      (v) => /.+@.+\..+/.test(v) || 'E-mail must be valid',
+    username: '',
+    usernameRules: [
+      (v) => !!v || 'Username is required',
+      (v) => /.+@.+\..+/.test(v) || 'Username must be valid',
     ],
+
     password: '',
     passwordRules: [
       (v) => !!v || 'Password Required',
