@@ -1,6 +1,6 @@
 <template>
   <div>
-    <base-search />
+    <base-search class="mb-4" />
     <fish-list-category :items="listCategory" />
   </div>
 </template>
@@ -12,10 +12,16 @@ export default {
     BaseSearch: () => import('@/components/Base/BaseSearch'),
     FishListCategory: () => import('@/components/Base/Fish/FishListCategory'),
   },
-  data: () => ({}),
   head() {
     return {
-      title: 'Fish-in - Category',
+      title: 'Kategori',
+      meta: [
+        {
+          hid: 'kategori',
+          name: 'kategori',
+          content: 'Halaman kategori ikan Fish-In',
+        },
+      ],
     }
   },
   computed: {

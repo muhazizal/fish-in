@@ -25,8 +25,8 @@ export default {
         icon: 'mdi-home',
       },
       {
-        name: 'Category',
-        link: '/category',
+        name: 'Kategori',
+        link: '/kategori',
         icon: 'mdi-select-group',
       },
       {
