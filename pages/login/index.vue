@@ -10,6 +10,7 @@ export default {
   components: {
     LoginForm: () => import('@/components/Login/LoginForm'),
   },
+  layout: 'auth',
   head() {
     return {
       title: 'Login',

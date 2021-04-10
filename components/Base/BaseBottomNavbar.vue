@@ -16,7 +16,7 @@
         <v-icon class="d-block" :style="getLinkStyle(item.name)">
           {{ item.icon }}
         </v-icon>
-        <span class="d-block" style="font-size: 14px">
+        <span class="d-block" style="font-size: 10px">
           {{ item.name }}
         </span>
       </nuxt-link>
