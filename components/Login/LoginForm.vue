@@ -1,8 +1,19 @@
 <template>
   <v-form ref="form" v-model="valid" lazy-validation>
+    <div class="mt-4">
+      <h2 class="font-weight-regular">Selamat Datang di Fish-In</h2>
+    </div>
+
+    <div class="mt-2">
+      <p class="font-weight-light grey--text text--darken-2">
+        Silahkan masuk atau daftar akun terlebih dahulu
+      </p>
+    </div>
+
     <v-text-field
       v-model="email"
       :rules="emailRules"
+      prepend-inner-icon="mdi-account"
       label="E-mail"
       required
     ></v-text-field>
@@ -11,6 +22,7 @@
       v-model="password"
       :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
       :rules="passwordRules"
+      prepend-inner-icon="mdi-lock"
       :type="show1 ? 'text' : 'password'"
       name="input-10-1"
       label="Password"
@@ -18,16 +30,31 @@
       @click:append="show1 = !show1"
     ></v-text-field>
 
-    <div class="">
-      <v-btn :disabled="!valid" color="success" class="mr-4" @click="submit">
-        Login
+    <div class="text-right mt-2">
+      <router-link to="" class="text-decoration-none">
+        Lupa Password?
+      </router-link>
+    </div>
+
+    <div class="text-center">
+      <v-btn
+        class="ma-2 mt-8"
+        :loading="loading"
+        :disabled="loading"
+        color="primary"
+        x-large
+        @click="loader = 'loading'"
+      >
+        Masuk
       </v-btn>
     </div>
 
-    <div class="mt-3">
-      <router-link to="/login" class="text-decoration-none">
-        Don't have any account ? Register Here
-      </router-link>
+    <div class="text-center mt-4">
+      <p class="font-weight-light">Belum punya akun?</p>
+    </div>
+
+    <div class="text-center">
+      <v-btn x-large class="ma-2" outlined color="primary"> Daftar </v-btn>
     </div>
   </v-form>
 </template>

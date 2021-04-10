@@ -1,16 +1,28 @@
 <template>
   <v-form ref="form" v-model="valid" lazy-validation>
+    <div class="mt-4">
+      <h2 class="font-weight-regular">Selamat Datang di Fish-In</h2>
+    </div>
+
+    <div class="mt-2">
+      <p class="font-weight-light grey--text text--darken-2">
+        Silahkan masuk atau daftar akun terlebih dahulu
+      </p>
+    </div>
+
     <v-text-field
-      v-model="name"
+      v-model="username"
       :counter="32"
-      :rules="nameRules"
-      label="Name"
+      :rules="usernameRules"
+      prepend-inner-icon="mdi-account"
+      label="Username"
       required
     ></v-text-field>
 
     <v-text-field
       v-model="email"
       :rules="emailRules"
+      prepend-inner-icon="mdi-email"
       label="E-mail"
       required
     ></v-text-field>
@@ -18,6 +30,7 @@
     <v-text-field
       v-model="phone"
       :rules="phoneRules"
+      prepend-inner-icon="mdi-phone"
       label="Phone"
       required
     ></v-text-field>
@@ -28,39 +41,31 @@
       :rules="passwordRules"
       :type="show1 ? 'text' : 'password'"
       name="input-10-1"
+      prepend-inner-icon="mdi-lock"
       label="Password"
       hint="At least 8 characters"
       @click:append="show1 = !show1"
     ></v-text-field>
 
-    <v-text-field
-      v-model="password"
-      :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-      :rules="passwordRules"
-      :type="show1 ? 'text' : 're-type password'"
-      name="input-10-1"
-      label="Re-type Password"
-      hint="At least 8 characters"
-      @click:append="show1 = !show1"
-    ></v-text-field>
-
-    <v-checkbox
-      v-model="checkbox"
-      :rules="[(v) => !!v || 'You must agree to continue!']"
-      label="Do you agree?"
-      required
-    ></v-checkbox>
-
-    <div class="">
-      <v-btn :disabled="!valid" color="success" class="mr-4" @click="submit">
-        Register
+    <div class="text-center">
+      <v-btn
+        class="ma-2 mt-8"
+        :loading="loading"
+        :disabled="loading"
+        color="primary"
+        x-large
+        @click="loader = 'loading'"
+      >
+        Daftar
       </v-btn>
     </div>
 
-    <div class="mt-3">
-      <router-link to="/login" class="text-decoration-none">
-        Already have an account ? Sign-in Here
-      </router-link>
+    <div class="text-center mt-4">
+      <p class="font-weight-light">Sudah punya akun?</p>
+    </div>
+
+    <div class="text-center">
+      <v-btn x-large class="ma-2" outlined color="primary"> Masuk </v-btn>
     </div>
   </v-form>
 </template>
@@ -70,9 +75,10 @@ export default {
   data: () => ({
     valid: true,
     name: '',
-    nameRules: [
-      (v) => !!v || 'Name is required',
-      (v) => (v && v.length <= 32) || 'Name must be less than 10 characters',
+    usernameRules: [
+      (v) => !!v || 'Username is required',
+      (v) =>
+        (v && v.length <= 32) || 'Username must be less than 32 characters',
     ],
     email: '',
     emailRules: [
