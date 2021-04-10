@@ -2,9 +2,10 @@
   <div>
     <v-list>
       <user-list-item
-        v-for="(message, index) in messages"
+        v-for="(user, index) in users"
         :key="index"
-        :message="message"
+        :user="user"
+        :show-cta="showCta"
         class="my-1"
       />
     </v-list>
@@ -18,9 +19,13 @@ export default {
     UserListItem: () => import('./UserListItem'),
   },
   props: {
-    messages: {
+    users: {
       type: Array,
       default: () => [],
+    },
+    showCta: {
+      type: Boolean,
+      default: false,
     },
   },
 }
