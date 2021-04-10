@@ -1,7 +1,7 @@
 <template>
   <v-container class="pa-0">
     <base-search :label="searchLabel" />
-    <user-list :messages="messages" />
+    <user-list :users="users" :show-cta="showCta" />
   </v-container>
 </template>
 
@@ -14,7 +14,8 @@ export default {
   },
   data: () => ({
     searchLabel: 'Cari Obrolan',
-    messages: [
+    showCta: true,
+    users: [
       {
         img: 'https://cdn.vuetifyjs.com/images/lists/1.jpg',
         sender: 'Apink',
