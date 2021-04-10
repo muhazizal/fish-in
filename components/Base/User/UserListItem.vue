@@ -11,7 +11,7 @@
       </v-list-item-avatar>
       <v-list-item-content class="align-start">
         <v-list-item-title class="mb-2">
-          <span class="font-weight-medium">{{ user.sender }}</span>
+          <span class="font-weight-medium">{{ user.fullname }}</span>
           <span v-if="user.date" class="ml-2 green--text text-caption">{{
             user.date
           }}</span>
@@ -19,7 +19,7 @@
         <v-list-item-subtitle>{{ user.content }}</v-list-item-subtitle>
       </v-list-item-content>
       <v-list-item-action v-if="showCta">
-        <v-btn icon>
+        <v-btn icon :to="`/obrolan/${user.username}`">
           <v-icon color="grey lighten-1">mdi-chevron-right</v-icon>
         </v-btn>
       </v-list-item-action>
