@@ -19,7 +19,7 @@ export default {
   }),
   methods: {
     goToFaq() {
-      return this.$router.replace('/faq')
+      return this.$router.push('/faq')
     },
   },
 }

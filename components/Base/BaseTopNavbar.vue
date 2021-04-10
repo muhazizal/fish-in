@@ -3,10 +3,12 @@
     <v-row>
       <v-col cols="12" class="d-flex justify-center align-center">
         <!-- TOOD: change this app-bar-nav-icon to v-icon -->
-        <v-icon v-if="!needBackButton" color="white">mdi-fish</v-icon>
-        <v-icon v-else color="white" @click="backToPreviousPage()"
-          >mdi-arrow-left</v-icon
-        >
+        <v-icon v-if="!needBackButton" color="white" @click="goToHome()">
+          mdi-fish
+        </v-icon>
+        <v-icon v-else color="white" @click="backToPreviousPage()">
+          mdi-arrow-left
+        </v-icon>
         <v-spacer></v-spacer>
         <v-toolbar-title
           class="white--text text-capitalize font-weight-medium"
@@ -46,7 +48,10 @@ export default {
   computed: {
     needBackButton() {
       const name = this.$route.name
-      if (name && name.includes('faq')) {
+      if (
+        (name && name.includes('faq')) ||
+        (name && name.includes('tentang-kami'))
+      ) {
         return true
       } else {
         return false
@@ -56,6 +61,8 @@ export default {
       const name = this.$route.name
       if (name && name.includes('profil')) {
         return 'profil'
+      } else if (name && name.includes('tentang-kami')) {
+        return 'tentang kami'
       } else {
         return name
       }
@@ -69,6 +76,9 @@ export default {
     },
   },
   methods: {
+    goToHome() {
+      return this.$router.push('/beranda')
+    },
     backToPreviousPage() {
       return this.$router.back()
     },
