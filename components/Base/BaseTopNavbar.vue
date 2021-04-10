@@ -78,4 +78,9 @@ export default {
   },
 }
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+header {
+  position: fixed;
+  z-index: 100;
+}
+</style>

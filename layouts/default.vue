@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <base-top-navbar />
-    <v-main>
+    <v-main :style="getMarginTop">
       <v-container>
         <nuxt />
       </v-container>
@@ -28,6 +28,21 @@ export default {
         return false
       } else {
         return true
+      }
+    },
+    getMarginTop() {
+      const routeName = this.$route.name
+      switch (routeName) {
+        case 'obrolan':
+        case 'kategori':
+        case 'pesanan':
+          return {
+            marginTop: '114px',
+          }
+        default:
+          return {
+            marginTop: '54px',
+          }
       }
     },
   },
