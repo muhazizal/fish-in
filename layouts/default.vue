@@ -6,7 +6,7 @@
         <nuxt />
       </v-container>
     </v-main>
-    <base-bottom-navbar />
+    <base-bottom-navbar v-if="showBaseBottomNavbar" />
   </v-app>
 </template>
 
@@ -17,5 +17,18 @@ export default {
     BaseBottomNavbar: () => import('@/components/Base/BaseBottomNavbar'),
   },
   middleware: 'auth',
+  computed: {
+    showBaseBottomNavbar() {
+      const routeName = this.$route.name
+      if (
+        (routeName && routeName.includes('faq')) ||
+        routeName.includes('tentang-kami')
+      ) {
+        return false
+      } else {
+        return true
+      }
+    },
+  },
 }
 </script>
