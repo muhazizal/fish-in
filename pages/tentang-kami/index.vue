@@ -27,23 +27,23 @@ export default {
     users: [
       {
         img: require('~/assets/images/pp-ridho.jpg'),
-        sender: 'Muhammad Ridho Saputra',
-        content: '1301184402',
+        fullname: 'Muhammad Ridho Saputra',
+        content: '1301184402 - Backend Developer',
       },
       {
         img: require('~/assets/images/pp-assad.jpg'),
-        sender: 'Muhammad Aziz Al-assad',
-        content: '1301180044',
+        fullname: 'Muhammad Aziz Al-assad',
+        content: '1301180044 - Frontend Developer',
       },
       {
         img: '',
-        sender: 'Maulana Irfan Firdian',
-        content: '1301180294',
+        fullname: 'Maulana Irfan Firdian',
+        content: '1301180294 - Frontend Developer',
       },
       {
         img: '',
-        sender: 'Naufal Alvin Chandrasa',
-        content: '1301180214',
+        fullname: 'Naufal Alvin Chandrasa',
+        content: '1301180214 - Frontend Developer',
       },
     ],
   }),

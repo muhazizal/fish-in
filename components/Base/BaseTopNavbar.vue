@@ -9,18 +9,18 @@
         <v-icon v-else color="white" @click="backToPreviousPage()">
           mdi-arrow-left
         </v-icon>
-        <v-spacer></v-spacer>
+        <v-spacer v-if="!hideSpacer"></v-spacer>
         <v-toolbar-title
           class="white--text text-capitalize font-weight-medium"
-          :class="faqTitleStyle"
+          :class="getTitleClass"
         >
           {{ pageTitle }}
         </v-toolbar-title>
         <v-spacer></v-spacer>
         <router-link
-          v-if="!needBackButton"
           to="/notification"
           class="pl-3 text-decoration-none"
+          :style="getVisibilityHidden"
         >
           <v-icon color="white">mdi-bell</v-icon>
         </router-link>
@@ -39,9 +39,10 @@ export default {
     needBackButton() {
       const name = this.$route.name
       if (
-        (name && name.includes('faq')) ||
-        (name && name.includes('tentang-kami')) ||
-        (name && name.includes('bookmark'))
+        (name && name === 'faq') ||
+        (name && name === 'tentang-kami') ||
+        (name && name === 'bookmark') ||
+        (name && name === 'obrolan-username')
       ) {
         return true
       } else {
@@ -49,23 +50,35 @@ export default {
       }
     },
     pageTitle() {
-      const name = this.$route.name
-      if (name && name.includes('profil')) {
+      const { name, params } = this.$route
+      if (name && name === 'profil-username') {
         return 'profil'
-      } else if (name && name.includes('tentang-kami')) {
+      } else if (name && name === 'tentang-kami') {
         return 'tentang kami'
-      } else if (name && name.includes('bookmark')) {
+      } else if (name && name === 'bookmark') {
         return 'daftar bookmark'
+      } else if (name && name === 'obrolan-username') {
+        return params && params.username ? params.username : 'username'
       } else {
         return name
       }
     },
-    faqTitleStyle() {
+    getTitleClass() {
       const name = this.$route.name
-      if (name && name.includes('faq')) {
+      if (name && name === 'faq') {
         return 'text-uppercase'
+      } else if (name && name === 'obrolan-username') {
+        return 'ml-4'
+      } else {
+        return ''
       }
-      return ''
+    },
+    getVisibilityHidden() {
+      return this.needBackButton ? { visibility: 'hidden' } : ''
+    },
+    hideSpacer() {
+      const { name } = this.$route
+      return !!(name && name === 'obrolan-username')
     },
   },
   methods: {
