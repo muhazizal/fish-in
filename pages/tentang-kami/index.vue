@@ -1,9 +1,9 @@
 <template>
   <v-container
-    class="pa-0 d-flex flex-column justify-center"
-    style="height: calc(100vh - 134px)"
+    class="pa-0 d-flex flex-column"
+    style="height: calc(100vh - 78px)"
   >
-    <h2 class="text-h2 text-center" style="font-size: 28px !important">
+    <h2 class="text-h2 text-center mt-8" style="font-size: 28px !important">
       Fish-In App
     </h2>
     <p class="text-center text-subtitle-1 mb-8 grey--text text--darken-1">
@@ -11,7 +11,7 @@
     </p>
     <user-list :users="users" />
     <p
-      class="text-center text-subtitle-2 mt-8 mb-0 grey--text text--darken-1 font-weight-regular"
+      class="text-center text-subtitle-2 mt-16 mb-0 grey--text text--darken-1 font-weight-regular"
     >
       &copy; 2021 Fish-In - All Rights Reserved
     </p>
