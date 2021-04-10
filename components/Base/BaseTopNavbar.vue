@@ -3,9 +3,9 @@
     <v-row>
       <v-col cols="12" class="d-flex justify-center align-center">
         <!-- TOOD: change this app-bar-nav-icon to v-icon -->
-        <v-icon v-if="!needBackButton" color="white" @click="goToHome()">
-          mdi-fish
-        </v-icon>
+        <router-link v-if="!needBackButton" to="/beranda">
+          <v-icon color="white"> mdi-fish </v-icon>
+        </router-link>
         <v-icon v-else color="white" @click="backToPreviousPage()">
           mdi-arrow-left
         </v-icon>
@@ -18,12 +18,11 @@
         </v-toolbar-title>
         <v-spacer></v-spacer>
         <router-link
-          v-for="(item, index) in links"
-          :key="index"
-          :to="item.link"
+          v-if="!needBackButton"
+          to="/notification"
           class="pl-3 text-decoration-none"
         >
-          <v-icon color="white">{{ item.icon }}</v-icon>
+          <v-icon color="white">mdi-bell</v-icon>
         </router-link>
       </v-col>
       <base-tab-options />
@@ -36,21 +35,13 @@ export default {
   components: {
     BaseTabOptions: () => import('./BaseTabOptions'),
   },
-  data: () => ({
-    links: [
-      {
-        name: 'Notification',
-        link: '/',
-        icon: 'mdi-bell',
-      },
-    ],
-  }),
   computed: {
     needBackButton() {
       const name = this.$route.name
       if (
         (name && name.includes('faq')) ||
-        (name && name.includes('tentang-kami'))
+        (name && name.includes('tentang-kami')) ||
+        (name && name.includes('bookmark'))
       ) {
         return true
       } else {
@@ -63,6 +54,8 @@ export default {
         return 'profil'
       } else if (name && name.includes('tentang-kami')) {
         return 'tentang kami'
+      } else if (name && name.includes('bookmark')) {
+        return 'daftar bookmark'
       } else {
         return name
       }

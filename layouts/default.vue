@@ -22,7 +22,8 @@ export default {
       const routeName = this.$route.name
       if (
         (routeName && routeName.includes('faq')) ||
-        routeName.includes('tentang-kami')
+        routeName.includes('tentang-kami') ||
+        (routeName && routeName.includes('bookmark'))
       ) {
         return false
       } else {
