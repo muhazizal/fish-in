@@ -43,7 +43,7 @@
         :disabled="loading"
         color="primary"
         large
-        @click="loader = 'loading'"
+        @click="loading = false"
       >
         Masuk
       </v-btn>
@@ -64,6 +64,7 @@
 export default {
   name: 'LoginForm',
   data: () => ({
+    loading: false,
     valid: true,
     email: '',
     emailRules: [

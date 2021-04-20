@@ -1,6 +1,6 @@
 <template>
   <div>
-    <login-form></login-form>
+    <forget-pass-form></forget-pass-form>
   </div>
 </template>
 
@@ -8,7 +8,7 @@
 export default {
   name: 'ForgetPassPage',
   components: {
-    LoginForm: () => import('@/components/ForgetPass/ForgetPassForm'),
+    ForgetPassForm: () => import('@/components/ForgetPass/ForgetPassForm'),
   },
   layout: 'auth',
   head() {
