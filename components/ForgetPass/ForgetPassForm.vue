@@ -1,40 +1,22 @@
 <template>
   <v-form ref="form" v-model="valid" lazy-validation>
     <div class="mt-4">
-      <h2 class="font-weight-regular">Selamat Datang di Fish-In</h2>
+      <h2 class="font-weight-regular">Lupa Password</h2>
     </div>
 
     <div class="mt-2">
       <p class="font-weight-light grey--text">
-        Silahkan masuk atau daftar akun terlebih dahulu
+        Silahkan masukkan e-mail untuk pemulihan password
       </p>
     </div>
 
     <v-text-field
       v-model="email"
       :rules="emailRules"
-      prepend-inner-icon="mdi-account"
+      prepend-inner-icon="mdi-email"
       label="E-mail"
       required
     ></v-text-field>
-
-    <v-text-field
-      v-model="password"
-      :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-      :rules="passwordRules"
-      prepend-inner-icon="mdi-lock"
-      :type="show1 ? 'text' : 'password'"
-      name="input-10-1"
-      label="Password"
-      hint="At least 8 characters"
-      @click:append="show1 = !show1"
-    ></v-text-field>
-
-    <div class="text-right mt-2">
-      <router-link to="" class="text-decoration-none">
-        Lupa Password?
-      </router-link>
-    </div>
 
     <v-container class="text-center">
       <v-btn
@@ -43,20 +25,20 @@
         :disabled="loading"
         color="primary"
         large
-        @click="loading = false"
+        @click="loading = true"
       >
-        Masuk
+        Pulihkan Password
       </v-btn>
     </v-container>
 
-    <div class="text-center mt-4 d-flex align-center">
+    <!-- <div class="text-center mt-4 d-flex align-center">
       <v-divider></v-divider>
       <p class="font-weight-light grey--text ma-0">Belum punya akun?</p>
       <v-divider></v-divider>
-    </div>
+    </div> -->
 
     <v-container class="text-center">
-      <v-btn large outlined color="primary" width="100%"> Daftar </v-btn>
+      <v-btn large outlined color="primary" width="100%"> Cancel </v-btn>
     </v-container>
   </v-form>
 </template>
@@ -71,11 +53,7 @@ export default {
       (v) => !!v || 'E-mail is required',
       (v) => /.+@.+\..+/.test(v) || 'E-mail must be valid',
     ],
-    password: '',
-    passwordRules: [
-      (v) => !!v || 'Password Required',
-      (v) => (v && v.length >= 8) || 'Password must be more than 8 characters',
-    ],
+
     select: null,
   }),
 
