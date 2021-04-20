@@ -5,7 +5,7 @@
     </div>
 
     <div class="mt-2">
-      <p class="font-weight-light grey--text text--darken-2">
+      <p class="font-weight-light grey--text">
         Silahkan masuk atau daftar akun terlebih dahulu
       </p>
     </div>
@@ -36,26 +36,28 @@
       </router-link>
     </div>
 
-    <div class="text-center">
+    <v-container class="text-center">
       <v-btn
-        class="ma-2 mt-8"
+        width="100%"
         :loading="loading"
         :disabled="loading"
         color="primary"
-        x-large
+        large
         @click="loader = 'loading'"
       >
         Masuk
       </v-btn>
+    </v-container>
+
+    <div class="text-center mt-4 d-flex align-center">
+      <v-divider></v-divider>
+      <p class="font-weight-light grey--text ma-0">Belum punya akun?</p>
+      <v-divider></v-divider>
     </div>
 
-    <div class="text-center mt-4">
-      <p class="font-weight-light">Belum punya akun?</p>
-    </div>
-
-    <div class="text-center">
-      <v-btn x-large class="ma-2" outlined color="primary"> Daftar </v-btn>
-    </div>
+    <v-container class="text-center">
+      <v-btn large outlined color="primary" width="100%"> Daftar </v-btn>
+    </v-container>
   </v-form>
 </template>
 <script>
