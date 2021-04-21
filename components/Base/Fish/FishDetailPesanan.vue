@@ -77,15 +77,7 @@
         >
         <small>{{ item.status }}</small>
       </div>
-    </div>
-    <div class="my-10 text-center">
-      <v-btn
-        color="success"
-        class="text-capitalize font-weight-light px-16"
-        dark
-      >
-        Pesanan Selesai
-      </v-btn>
+      <button-finish title="Finish" />
     </div>
   </div>
 </template>
@@ -95,7 +87,9 @@ import { rupiahCurrency } from '@/utils/currency'
 
 export default {
   name: 'FishDetailPesanan',
-  components: {},
+  components: {
+    ButtonFinish: () => import('~/components/Base/ButtonFinish'),
+  },
   props: {
     title: {
       type: String,
