@@ -42,7 +42,8 @@ export default {
         (name && name === 'faq') ||
         (name && name === 'tentang-kami') ||
         (name && name === 'bookmark') ||
-        (name && name === 'obrolan-username')
+        (name && name === 'obrolan-username') ||
+        (name && name === 'notifikasi')
       ) {
         return true
       } else {
@@ -59,6 +60,8 @@ export default {
         return 'daftar bookmark'
       } else if (name && name === 'obrolan-username') {
         return params && params.username ? params.username : 'username'
+      } else if (name && name === 'notifikasi') {
+        return 'notifikasi'
       } else {
         return name
       }
