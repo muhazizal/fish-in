@@ -43,7 +43,8 @@ export default {
         (name && name === 'tentang-kami') ||
         (name && name === 'bookmark') ||
         (name && name === 'obrolan-username') ||
-        (name && name === 'pesanan-detail')
+        (name && name === 'pesanan-detail') ||
+        (name && name === 'metode-pembayaran')
       ) {
         return true
       } else {
@@ -58,6 +59,8 @@ export default {
         return 'tentang kami'
       } else if (name && name === 'bookmark') {
         return 'daftar bookmark'
+      } else if (name && name === 'metode-pembayaran') {
+        return 'metode pembayaran'
       } else if (name && name === 'obrolan-username') {
         return params && params.username ? params.username : 'username'
       } else if (name && name === 'pesanan-detail') {
