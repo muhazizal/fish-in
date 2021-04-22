@@ -49,7 +49,6 @@ export default {
   },
   computed: {
     convertedHargaKg() {
-      console.log(this.item)
       return rupiahCurrency(this.item.harga_kg, 0, 'Rp.', '.')
     },
     convertedHargaOns() {
@@ -59,9 +58,10 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.img-category
-  width : 100px,
-  height : 75px,
-  border-radius : 5px,
+<style lang="scss" scoped>
+.img-category {
+  width: 100px;
+  height: 75px;
+  border-radius: 5px;
+}
 </style>
