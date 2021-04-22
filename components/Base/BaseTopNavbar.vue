@@ -18,12 +18,16 @@
         </v-toolbar-title>
         <v-spacer></v-spacer>
         <router-link
+          v-if="getBellIcon"
           to="/notification"
           class="pl-3 text-decoration-none"
           :style="getVisibilityHidden"
         >
           <v-icon color="white">mdi-bell</v-icon>
         </router-link>
+        <v-icon v-if="getBookmarkIcon" color="white">
+          mdi-bookmark-outline
+        </v-icon>
       </v-col>
       <base-tab-options />
     </v-row>
@@ -43,8 +47,10 @@ export default {
         (name && name === 'tentang-kami') ||
         (name && name === 'bookmark') ||
         (name && name === 'obrolan-username') ||
-        (name && name === 'notifikasi')(name && name === 'pesanan-detail') ||
-        (name && name === 'metode-pembayaran')
+        (name && name === 'notifikasi') ||
+        (name && name === 'pesanan-detail') ||
+        (name && name === 'metode-pembayaran') ||
+        (name && name === 'detail-ikan')
       ) {
         return true
       } else {
@@ -67,9 +73,25 @@ export default {
         return 'notifikasi'
       } else if (name && name === 'pesanan-detail') {
         return params && params.username ? params.username : 'Pesanan'
+      } else if (name && name === 'detail-ikan') {
+        return 'tentang kami'
       } else {
         return name
       }
+    },
+    getBellIcon() {
+      const { name } = this.$route
+      if (name && name !== 'detail-ikan') {
+        return true
+      }
+      return false
+    },
+    getBookmarkIcon() {
+      const { name } = this.$route
+      if (name && name === 'detail-ikan') {
+        return true
+      }
+      return false
     },
     getTitleClass() {
       const name = this.$route.name
