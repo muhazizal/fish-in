@@ -17,14 +17,17 @@
           {{ pageTitle }}
         </v-toolbar-title>
         <v-spacer></v-spacer>
-        <!-- <router-link
+        <router-link
+          v-if="getBellIcon"
           to="/notification"
           class="pl-3 text-decoration-none"
           :style="getVisibilityHidden"
         >
           <v-icon color="white">mdi-bell</v-icon>
-        </router-link> -->
-        <v-icon color="white"> mdi-bookmark-outline </v-icon>
+        </router-link>
+        <v-icon v-if="getBookmarkIcon" color="white">
+          mdi-bookmark-outline
+        </v-icon>
       </v-col>
       <base-tab-options />
     </v-row>
@@ -75,6 +78,20 @@ export default {
       } else {
         return name
       }
+    },
+    getBellIcon() {
+      const { name } = this.$route
+      if (name && name !== 'detail-ikan') {
+        return true
+      }
+      return false
+    },
+    getBookmarkIcon() {
+      const { name } = this.$route
+      if (name && name === 'detail-ikan') {
+        return true
+      }
+      return false
     },
     getTitleClass() {
       const name = this.$route.name
