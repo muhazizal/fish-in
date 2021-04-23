@@ -29,33 +29,7 @@
       >
     </v-row>
     <v-divider></v-divider>
-    <div class="my-3">
-      <div class="d-flex align-center justify-space-between mb-2">
-        <div>
-          <small class="mt-2 text-grey font-weight-light"> Jumlah Ikan </small>
-        </div>
-        <div>
-          <small>{{ item.jumlahIkan }}kg x {{ convertedHargaIkan }}</small>
-        </div>
-      </div>
-      <div class="d-flex align-center justify-space-between mb-2">
-        <div>
-          <small class="mt-2 text-grey font-weight-light">Ongkir</small>
-        </div>
-        <div>
-          <small>{{ convertedOngkir }}</small>
-        </div>
-      </div>
-
-      <div class="d-flex align-center justify-space-between mt-2">
-        <div>
-          <small class="mt-2">Total Harga</small>
-        </div>
-        <div>
-          <small> {{ convertedTotalHarga }}</small>
-        </div>
-      </div>
-    </div>
+    <fish-total-harga :price="price" />
     <v-divider></v-divider>
     <div class="my-3">
       <div class="d-flex flex-column">
@@ -89,6 +63,7 @@ export default {
   name: 'FishDetailPesanan',
   components: {
     ButtonFinish: () => import('~/components/Base/ButtonFinish'),
+    FishTotalHarga: () => import('~/components/Base/Fish/FishTotalHarga'),
   },
   props: {
     title: {
@@ -101,12 +76,15 @@ export default {
     },
   },
   computed: {
-    convertedHargaIkan() {
-      console.log(this.item)
-      return rupiahCurrency(this.item.hargaIkan, 0, 'Rp.', '.')
+    price() {
+      return {
+        hargaIkan: this.item.hargaIkan,
+        ongkir: this.item.ongkir,
+        jumlahIkan: this.item.jumlahIkan,
+      }
     },
-    convertedHargaOns() {
-      return rupiahCurrency(this.item.harga_ons, 0, 'Rp.', '.')
+    convertedHargaIkan() {
+      return rupiahCurrency(this.item.hargaIkan, 0, 'Rp.', '.')
     },
     convertedOngkir() {
       return rupiahCurrency(this.item.ongkir, 0, 'Rp.', '.')

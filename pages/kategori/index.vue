@@ -39,6 +39,7 @@ export default {
           review: 20,
           harga_kg: 50000,
           harga_ons: 1250,
+          chevron: true,
         },
         {
           id: 2,
@@ -47,6 +48,7 @@ export default {
           review: 15,
           harga_kg: 10000,
           harga_ons: 2250,
+          chevron: true,
         },
         {
           id: 3,
@@ -55,6 +57,7 @@ export default {
           review: 10,
           harga_kg: 110000,
           harga_ons: 5250,
+          chevron: true,
         },
       ]
     },

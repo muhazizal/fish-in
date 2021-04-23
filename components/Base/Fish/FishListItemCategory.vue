@@ -30,7 +30,14 @@
           </h5>
         </div>
       </v-col>
-      <v-col cols="1" class="d-flex align-center">
+      <v-col
+        cols="1"
+        class="align-center"
+        :class="{
+          'd-none': item.chevron == false,
+          'd-flex': item.chevron == true,
+        }"
+      >
         <v-icon color="grey">mdi-chevron-right</v-icon>
       </v-col>
     </v-row>
