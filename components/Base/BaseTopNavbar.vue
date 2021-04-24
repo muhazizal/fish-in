@@ -43,7 +43,8 @@ export default {
         (name && name === 'tentang-kami') ||
         (name && name === 'bookmark') ||
         (name && name === 'obrolan-username') ||
-        (name && name === 'notifikasi')(name && name === 'pesanan-detail') ||
+        (name && name === 'notifikasi') ||
+        (name && name === 'pesanan-detail') ||
         (name && name === 'metode-pembayaran')
       ) {
         return true

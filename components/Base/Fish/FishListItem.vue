@@ -20,10 +20,8 @@
     </v-card>
   </div>
 </template>
-
 <script>
 import { rupiahCurrency } from '@/utils/currency'
-
 export default {
   name: 'FishListItem',
   props: {
@@ -58,5 +56,4 @@ export default {
   },
 }
 </script>
-
 <style lang="scss" scoped></style>

@@ -16,7 +16,6 @@
     </div>
   </v-container>
 </template>
-
 <script>
 export default {
   name: 'FishList',
