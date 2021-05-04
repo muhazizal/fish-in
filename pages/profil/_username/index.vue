@@ -35,5 +35,19 @@ export default {
       ],
     }
   },
+  computed: {
+    accountDetail() {
+      return this.$store.getters['account/accountDetail']
+    },
+  },
+  async created() {
+    await this.getAccountDetail()
+    console.log(this.accountDetail)
+  },
+  methods: {
+    async getAccountDetail() {
+      await this.$store.dispatch('account/getAccountDetail')
+    },
+  },
 }
 </script>

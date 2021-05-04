@@ -39,12 +39,24 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/proxy',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  axios: {
+    proxy: true, // Can be also an object with default options
+  },
+
+  // Proxy module configuration from axios
+  proxy: {
+    '/api/': {
+      target: 'https://fishin-api-server.herokuapp.com/api/',
+      pathRewrite: { '^/api/': '' },
+    },
+    changeOrigin: true,
+  },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
@@ -91,4 +103,9 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
+
+  // Server configuration
+  server: {
+    port: 8000, // default: 3000
+  },
 }
