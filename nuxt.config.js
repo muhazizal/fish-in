@@ -2,10 +2,10 @@ import colors from 'vuetify/es5/util/colors'
 
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
-  ssr: false,
+  ssr: true,
 
   // Target: https://go.nuxtjs.dev/config-target
-  target: 'static',
+  target: 'server',
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -46,16 +46,19 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    proxy: true, // Can be also an object with default options
+    proxy: true,
+    credentials: true,
+    prefix: '/api/',
   },
 
   // Proxy module configuration from axios
   proxy: {
     '/api/': {
-      target: 'https://fishin-api-server.herokuapp.com/api/',
+      target: process.env.API_URL,
       pathRewrite: { '^/api/': '' },
+      secure: false,
+      changeOrigin: true,
     },
-    changeOrigin: true,
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa

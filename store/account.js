@@ -13,6 +13,7 @@ export const actions = {
       password: 'cobacom',
     }
     try {
+      console.log(process.env.API_URL)
       const response = await this.$axios.get('/pembeli', data)
       console.log(response)
 
