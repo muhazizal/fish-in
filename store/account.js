@@ -8,13 +8,12 @@ export const mutations = {
 }
 export const actions = {
   async getAccountDetail({ commit }) {
-    const data = {
+    const payload = {
       email: 'coba@pembeli.com',
       password: 'cobacom',
     }
     try {
-      console.log(process.env.API_URL)
-      const response = await this.$axios.get('/pembeli', data)
+      const response = await this.$axios.get('pembeli', payload)
       console.log(response)
 
       if (response) {

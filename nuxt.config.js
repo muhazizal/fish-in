@@ -39,6 +39,7 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    // https://go.nuxtjs.dev/proxy
     '@nuxtjs/proxy',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
@@ -93,6 +94,7 @@ export default {
     },
   },
 
+  // custom router configuration
   router: {
     trailingSlash: false,
     extendRoutes(routes, resolve) {
@@ -106,9 +108,4 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
-
-  // Server configuration
-  server: {
-    port: 8000, // default: 3000
-  },
 }

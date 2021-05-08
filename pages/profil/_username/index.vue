@@ -42,7 +42,7 @@ export default {
   },
   async created() {
     await this.getAccountDetail()
-    console.log(this.accountDetail)
+    // console.log(this.accountDetail)
   },
   methods: {
     async getAccountDetail() {
