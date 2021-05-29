@@ -10,14 +10,14 @@
       </p>
     </div>
 
-    <v-text-field
+    <!-- <v-text-field
       v-model="username"
       :counter="32"
       :rules="usernameRules"
       prepend-inner-icon="mdi-account"
       label="Username"
       required
-    ></v-text-field>
+    /> -->
 
     <v-text-field
       v-model="email"
@@ -25,48 +25,48 @@
       prepend-inner-icon="mdi-email"
       label="E-mail"
       required
-    ></v-text-field>
+    />
 
-    <v-text-field
+    <!-- <v-text-field
       v-model="phone"
       :rules="phoneRules"
       prepend-inner-icon="mdi-phone"
       label="Phone"
       required
-    ></v-text-field>
+    /> -->
 
     <v-text-field
       v-model="password"
-      :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+      :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
       :rules="passwordRules"
-      :type="show1 ? 'text' : 'password'"
+      :type="showPassword ? 'text' : 'password'"
       name="input-10-1"
       prepend-inner-icon="mdi-lock"
       label="Password"
       hint="At least 8 characters"
-      @click:append="show1 = !show1"
-    ></v-text-field>
+      @click:append="showPassword = !showPassword"
+    />
 
-    <v-container class="text-center">
+    <v-container class="text-center px-0">
       <v-btn
         width="100%"
         :loading="loading"
         :disabled="loading"
         color="primary"
         large
-        @click="loader = 'loading'"
+        @click="registerAccount"
       >
         Daftar
       </v-btn>
     </v-container>
 
-    <div class="text-center mt-4 d-flex align-center">
+    <div class="text-center my-1 d-flex align-center">
       <v-divider></v-divider>
       <p class="font-weight-light grey--text ma-0">Sudah punya akun?</p>
       <v-divider></v-divider>
     </div>
 
-    <v-container class="text-center">
+    <v-container class="text-center px-0">
       <v-btn large outlined color="primary" width="100%"> Masuk </v-btn>
     </v-container>
   </v-form>
@@ -75,8 +75,12 @@
 export default {
   name: 'RegisterForm',
   data: () => ({
+    showPassword: false,
+    select: null,
+    checkbox: false,
     valid: true,
-    name: '',
+    loading: false,
+    username: '',
     usernameRules: [
       (v) => !!v || 'Username is required',
       (v) =>
@@ -92,13 +96,19 @@ export default {
       (v) => !!v || 'Password Required',
       (v) => (v && v.length >= 8) || 'Password must be more than 8 characters',
     ],
-    select: null,
-    checkbox: false,
   }),
-
   methods: {
     validate() {
       this.$refs.form.validate()
+    },
+    async registerAccount() {
+      this.loading = true
+      const params = {
+        email: this.email,
+        password: this.password,
+      }
+      await this.$store.dispatch('account/registerAccount', params)
+      this.loading = false
     },
   },
 }

@@ -1,25 +1,38 @@
 export const state = () => ({
-  accountDetail: {},
+  account: {},
 })
+
 export const mutations = {
-  SET_ACCOUNT_DETAIL(state, payload) {
-    state.accountDetail = payload
+  SET_ACCOUNT(state, payload) {
+    state.account = payload
   },
 }
+
 export const actions = {
-  async getAccountDetail({ commit }) {
-    const payload = {
-      email: 'coba@pembeli.com',
-      password: 'cobacom',
-    }
+  async registerAccount({ commit, dispatch }, params) {
     try {
-      const response = await this.$axios.get('pembeli', payload)
-      console.log(response)
+      const response = await this.$axios.post('/api/pembeli', params)
+      console.log('Response registerAccount: ', response)
 
       if (response) {
-        if (response.status === 200) {
-          const { data } = response
-          commit('SET_ACCOUNT_DETAIL', data)
+        const { data, token } = response
+        if (data && token) {
+          await dispatch.loginAccount(params)
+        }
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  },
+  async loginAccount({ commit }, params) {
+    try {
+      const response = await this.$axios.get('/api/pembeli', params)
+      console.log('Response loginAccount: ', response)
+
+      if (response) {
+        const { data } = response
+        if (data) {
+          commit('SET_ACCOUNT', data)
         }
       }
     } catch (error) {
@@ -27,6 +40,7 @@ export const actions = {
     }
   },
 }
+
 export const getters = {
   accountDetail(state) {
     return state.accountDetail
