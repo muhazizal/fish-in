@@ -56,7 +56,15 @@
     </div>
 
     <v-container class="text-center px-0">
-      <v-btn large outlined color="primary" width="100%"> Daftar </v-btn>
+      <v-btn
+        @click="redirectRegister"
+        large
+        outlined
+        color="primary"
+        width="100%"
+      >
+        Daftar
+      </v-btn>
     </v-container>
   </v-form>
 </template>
@@ -83,6 +91,9 @@ export default {
   methods: {
     validate() {
       this.$refs.form.validate()
+    },
+    redirectRegister() {
+      this.$router.push('/register')
     },
     async loginAccount() {
       this.loading = true

@@ -18,7 +18,7 @@ export const actions = {
       const response = await this.$axios.post('/api/pembeli', params)
       console.log('Response registerAccount: ', response)
       if (response) {
-        await dispatch.loginAccount(params)
+        await dispatch('loginAccount', params)
       }
     } catch (error) {
       console.log(error)
@@ -30,10 +30,12 @@ export const actions = {
       console.log('Response loginAccount: ', response)
       if (response) {
         const { data, token } = response
+        console.log(token)
         if (data && token) {
           localStorage.setItem('usr_tkn', token)
           commit('SET_ACCOUNT', data)
           commit('SET_IS_AUTHENTICATED', true)
+          this.$router.push('/')
         }
       }
     } catch (error) {

@@ -67,7 +67,9 @@
     </div>
 
     <v-container class="text-center px-0">
-      <v-btn large outlined color="primary" width="100%"> Masuk </v-btn>
+      <v-btn @click="redirectLogin" large outlined color="primary" width="100%">
+        Masuk
+      </v-btn>
     </v-container>
   </v-form>
 </template>
@@ -100,6 +102,9 @@ export default {
   methods: {
     validate() {
       this.$refs.form.validate()
+    },
+    redirectLogin() {
+      this.$router.push('/login')
     },
     async registerAccount() {
       this.loading = true
