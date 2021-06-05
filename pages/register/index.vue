@@ -1,20 +1,40 @@
 <template>
   <div>
-    <register-form></register-form>
+    <auth-form
+      @on-handle-change-email="handleChangeEmail"
+      @on-handle-change-password="handleChangePassword"
+      :email="email"
+      :password="password"
+      :page="page"
+    />
   </div>
 </template>
 
 <script>
 export default {
   name: 'RegisterPage',
-  components: {
-    RegisterForm: () => import('@/components/Register/RegisterForm'),
-  },
   layout: 'auth',
+  components: {
+    AuthForm: () => import('@/components/Base/Auth/AuthForm.vue'),
+  },
+  data: () => ({
+    email: '',
+    password: '',
+    page: 'register',
+  }),
   head() {
     return {
-      title: 'Fish-in - Register',
+      title: 'Register',
     }
+  },
+
+  methods: {
+    handleChangeEmail(value) {
+      this.email = value
+    },
+    handleChangePassword(value) {
+      this.password = value
+    },
   },
 }
 </script>
