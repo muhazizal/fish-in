@@ -20,14 +20,14 @@
 
     <v-text-field
       v-model="password"
-      :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+      :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
       :rules="passwordRules"
       prepend-inner-icon="mdi-lock"
-      :type="show1 ? 'text' : 'password'"
+      :type="showPassword ? 'text' : 'password'"
       name="input-10-1"
       label="Password"
       hint="At least 8 characters"
-      @click:append="show1 = !show1"
+      @click:append="showPassword = !showPassword"
     ></v-text-field>
 
     <div class="text-right mt-2">
@@ -36,26 +36,26 @@
       </router-link>
     </div>
 
-    <v-container class="text-center">
+    <v-container class="text-center px-0">
       <v-btn
         width="100%"
         :loading="loading"
         :disabled="loading"
         color="primary"
         large
-        @click="loading = false"
+        @click="loginAccount"
       >
         Masuk
       </v-btn>
     </v-container>
 
-    <div class="text-center mt-4 d-flex align-center">
+    <div class="text-center my-1 d-flex align-center">
       <v-divider></v-divider>
       <p class="font-weight-light grey--text ma-0">Belum punya akun?</p>
       <v-divider></v-divider>
     </div>
 
-    <v-container class="text-center">
+    <v-container class="text-center px-0">
       <v-btn large outlined color="primary" width="100%"> Daftar </v-btn>
     </v-container>
   </v-form>
@@ -65,6 +65,7 @@ export default {
   name: 'LoginForm',
   data: () => ({
     loading: false,
+    showPassword: false,
     valid: true,
     email: '',
     emailRules: [
@@ -82,6 +83,16 @@ export default {
   methods: {
     validate() {
       this.$refs.form.validate()
+    },
+    async loginAccount() {
+      this.loading = true
+      const params = {
+        email: this.email,
+        password: this.password,
+      }
+      await this.$store.dispatch('account/loginAccount', params)
+      this.loading = false
+      this.$router.push('/')
     },
   },
 }

@@ -49,7 +49,6 @@ export default {
   axios: {
     proxy: true,
     credentials: true,
-    prefix: '/api/',
   },
 
   // Proxy module configuration from axios

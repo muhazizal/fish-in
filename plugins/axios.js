@@ -1,7 +1,12 @@
 export default function ({ $axios, store, redirect }) {
-  // $axios.onRequest(config => {
-  //   config.headers.common['FISHIN-SERVER'] =
-  // })
+  $axios.onRequest((config) => {
+    // start from here @maul
+    // check bisa makek local storage gk buat set headers tokennya
+    const userToken = localStorage.getItem('usr_tkn')
+    if (userToken) {
+      config.headers.common['FISHIN-SERVER'] = userToken
+    }
+  })
   // $axios.onError((error) => {
   //   if (error.response && error.response.status === 500) {
   //     redirect('/login')

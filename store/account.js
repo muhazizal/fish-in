@@ -1,24 +1,24 @@
 export const state = () => ({
   account: {},
+  isAuthenticated: false,
 })
 
 export const mutations = {
   SET_ACCOUNT(state, payload) {
     state.account = payload
   },
+  SET_IS_AUTHENTICATED(state, payload) {
+    state.isAuthenticated = payload
+  },
 }
 
 export const actions = {
-  async registerAccount({ commit, dispatch }, params) {
+  async registerAccount({ dispatch }, params) {
     try {
       const response = await this.$axios.post('/api/pembeli', params)
       console.log('Response registerAccount: ', response)
-
       if (response) {
-        const { data, token } = response
-        if (data && token) {
-          await dispatch.loginAccount(params)
-        }
+        await dispatch.loginAccount(params)
       }
     } catch (error) {
       console.log(error)
@@ -28,11 +28,12 @@ export const actions = {
     try {
       const response = await this.$axios.get('/api/pembeli', params)
       console.log('Response loginAccount: ', response)
-
       if (response) {
-        const { data } = response
-        if (data) {
+        const { data, token } = response
+        if (data && token) {
+          localStorage.setItem('usr_tkn', token)
           commit('SET_ACCOUNT', data)
+          commit('SET_IS_AUTHENTICATED', true)
         }
       }
     } catch (error) {
