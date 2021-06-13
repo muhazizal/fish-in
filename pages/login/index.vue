@@ -40,7 +40,7 @@ export default {
         email: this.email,
         password: this.password,
       }
-      await this.$store.dispatch('account/registerAccount', params)
+      await this.$store.dispatch('account/loginAccount', params)
     },
   },
 }

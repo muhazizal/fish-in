@@ -11,11 +11,13 @@ export const mutations = {
 export const actions = {
   async fishList({ commit }) {
     try {
-      const response = await this.$axios.get('/produk')
+      const response = await this.$axios.get('/api/produk')
       console.log('Response fishList: ', response)
       if (response) {
         const { data } = response
-        commit('SET_FISH_LIST', data)
+        if (data) {
+          commit('SET_FISH_LIST', data)
+        }
       }
     } catch (error) {
       console.log(error)

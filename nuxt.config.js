@@ -28,35 +28,27 @@ export default {
   components: true,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: [
-    // https://go.nuxtjs.dev/eslint
-    '@nuxtjs/eslint-module',
-    // https://go.nuxtjs.dev/vuetify
-    '@nuxtjs/vuetify',
-  ],
+  buildModules: ['@nuxtjs/eslint-module', '@nuxtjs/vuetify'],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    // https://go.nuxtjs.dev/proxy
     '@nuxtjs/proxy',
-    // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+    'cookie-universal-nuxt',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    debug: true,
     proxy: true,
+    credentials: true,
   },
 
-  // Proxy module configuration from axios
+  // Proxy module configuration
   proxy: {
     '/api/': {
       target: process.env.API_URL,
-      pathRewrite: { '^/api/': '' },
-      secure: false,
+      secure: true,
       changeOrigin: true,
     },
   },

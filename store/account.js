@@ -15,11 +15,11 @@ export const mutations = {
 export const actions = {
   async registerAccount({ dispatch }, params) {
     try {
-      const response = await this.$axios.post('/pembeli', params)
+      console.log('Params registerAccount: ', params)
+      const response = await this.$axios.post('/api/pembeli/register', params)
       console.log('Response registerAccount: ', response)
       if (response) {
-        console.log('login disini')
-        // await dispatch('loginAccount', params)
+        await dispatch('loginAccount', params)
       }
     } catch (error) {
       console.log(error)
@@ -27,15 +27,18 @@ export const actions = {
   },
   async loginAccount({ commit }, params) {
     try {
-      const response = await this.$axios.$get('/pembeli', params)
+      console.log('Params loginAccount: ', params)
+      const response = await this.$axios.post('/api/pembeli/login', params)
       console.log('Response loginAccount: ', response)
       if (response) {
-        const { data, token } = response
-        console.log(token)
+        const { data, token } = response.data
+        console.log('token: ', token)
+        console.log('data: ', data)
         if (data && token) {
-          localStorage.setItem('usr_tkn', token)
+          this.$cookies.set('auth_token', token, {
+            secure: true,
+          })
           commit('SET_ACCOUNT', data)
-          commit('SET_IS_AUTHENTICATED', true)
           this.$router.push('/')
         }
       }

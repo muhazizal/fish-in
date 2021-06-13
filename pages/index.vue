@@ -16,7 +16,6 @@ export default {
     HomeFishCategory: () => import('@/components/Home/HomeFishCategory'),
     HomeFishList: () => import('@/components/Home/HomeFishList'),
   },
-  middleware: ['auth'],
   head() {
     return {
       title: 'Beranda',

@@ -1,6 +1,6 @@
-export default function ({ store, redirect }) {
-  if (!store.state.isAuthenticated) {
-    console.log(store.state.account.isAuthenticated)
+export default function ({ app, redirect }) {
+  const userToken = app.$cookies.get('auth_token')
+  if (!userToken) {
     return redirect('/login')
   }
 }

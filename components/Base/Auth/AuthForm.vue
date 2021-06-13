@@ -135,9 +135,12 @@ export default {
     handleChangePassword(value) {
       this.$emit('on-change-password', value)
     },
+    handleAuthMethod() {
+      return this.page === 'login' ? 'on-login-account' : 'on-register-account'
+    },
     handleDispatchAuth() {
-      this.loading = true
-      this.$emit('on-register-account', {
+      const authMethod = this.handleAuthMethod()
+      this.$emit(authMethod, {
         email: this.inputEmail,
         password: this.inputPassword,
       })
