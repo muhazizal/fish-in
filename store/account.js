@@ -27,7 +27,7 @@ export const actions = {
   },
   async loginAccount({ commit }, params) {
     try {
-      const response = await this.$axios.get('/pembeli', params)
+      const response = await this.$axios.$get('/pembeli', params)
       console.log('Response loginAccount: ', response)
       if (response) {
         const { data, token } = response
