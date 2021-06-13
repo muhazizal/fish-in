@@ -15,10 +15,11 @@ export const mutations = {
 export const actions = {
   async registerAccount({ dispatch }, params) {
     try {
-      const response = await this.$axios.post('/api/pembeli', params)
+      const response = await this.$axios.post('/pembeli', params)
       console.log('Response registerAccount: ', response)
       if (response) {
-        await dispatch('loginAccount', params)
+        console.log('login disini')
+        // await dispatch('loginAccount', params)
       }
     } catch (error) {
       console.log(error)
@@ -26,7 +27,7 @@ export const actions = {
   },
   async loginAccount({ commit }, params) {
     try {
-      const response = await this.$axios.get('/api/pembeli', params)
+      const response = await this.$axios.get('/pembeli', params)
       console.log('Response loginAccount: ', response)
       if (response) {
         const { data, token } = response

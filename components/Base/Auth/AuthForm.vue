@@ -6,30 +6,29 @@
 
     <div class="mt-2">
       <p class="font-weight-light grey--text">
-        Silahkan masuk atau daftar akun terlebih dahulu
+        Masukkan akun Anda untuk {{ getSubtitle }}
       </p>
     </div>
 
     <v-text-field
       v-model="inputEmail"
-      :rules="emailRules"
       prepend-inner-icon="mdi-account"
       label="E-mail"
       required
-      @change="(value) => handleChangeEmail"
+      :rules="emailRules"
+      @input="handleChangeEmail"
     ></v-text-field>
 
     <v-text-field
       v-model="inputPassword"
-      :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
-      :rules="passwordRules"
       prepend-inner-icon="mdi-lock"
-      :type="showPassword ? 'text' : 'password'"
       name="input-10-1"
       label="Password"
-      hint="At least 8 characters"
+      :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
+      :rules="passwordRules"
+      :type="showPassword ? 'text' : 'password'"
       @click:append="showPassword = !showPassword"
-      @change="(value) => handleChangePassword"
+      @input="handleChangePassword"
     ></v-text-field>
 
     <div class="text-right mt-2">
@@ -45,9 +44,9 @@
         :disabled="loading"
         color="primary"
         large
-        @click="authMethod"
+        @click="handleDispatchAuth"
       >
-        {{ actionNameMethod }}
+        {{ getNameMethod }}
       </v-btn>
     </v-container>
 
@@ -58,8 +57,14 @@
     </div>
 
     <v-container class="text-center px-0">
-      <v-btn @click="redirectPage" large outlined color="primary" width="100%">
-        {{ actionNameRedirect }}
+      <v-btn
+        large
+        outlined
+        color="primary"
+        width="100%"
+        @click="handleRedirectPage"
+      >
+        {{ getNameRedirect }}
       </v-btn>
     </v-container>
   </v-form>
@@ -72,7 +77,10 @@ export default {
       type: String,
       default: '',
     },
-    password: { type: String, default: '' },
+    password: {
+      type: String,
+      default: '',
+    },
     page: {
       type: String,
       default: '',
@@ -82,6 +90,7 @@ export default {
     loading: false,
     showPassword: false,
     valid: true,
+    select: null,
     inputEmail: '',
     inputPassword: '',
     emailRules: [
@@ -92,53 +101,47 @@ export default {
       (v) => !!v || 'Password Required',
       (v) => (v && v.length >= 8) || 'Password must be more than 8 characters',
     ],
-    select: null,
   }),
 
   computed: {
-    actionNameMethod() {
+    getNameMethod() {
       return this.page && this.page === 'login' ? 'Masuk' : 'Daftar'
     },
-    actionNameRedirect() {
+    getNameRedirect() {
       return this.page && this.page === 'login' ? 'Daftar' : 'Masuk'
     },
+    getSubtitle() {
+      return this.page && this.page === 'login' ? 'Login' : 'Register'
+    },
   },
-
   created() {
     this.inputEmail = this.email
     this.inputPassword = this.password
   },
-
   methods: {
     validate() {
       this.$refs.form.validate()
     },
-    redirectPage() {
+    handleRedirectPage() {
       if (this.page === 'login') {
         this.$router.push('/register')
       } else {
         this.$router.push('/login')
       }
     },
-    async authMethod() {
-      let method = 'account/registerAccount'
-
-      if (this.page === 'login') {
-        method = 'account/loginAccount'
-      }
-      this.loading = true
-      const params = {
-        email: this.email,
-        password: this.password,
-      }
-      await this.$store.dispatch(method, params)
-      this.loading = false
-    },
     handleChangeEmail(value) {
-      this.$emit('on-handle-change-email', value)
+      this.$emit('on-change-email', value)
     },
     handleChangePassword(value) {
-      this.$emit('on-handle-change-password', value)
+      this.$emit('on-change-password', value)
+    },
+    handleDispatchAuth() {
+      this.loading = true
+      this.$emit('on-register-account', {
+        email: this.inputEmail,
+        password: this.inputPassword,
+      })
+      this.loading = false
     },
   },
 }

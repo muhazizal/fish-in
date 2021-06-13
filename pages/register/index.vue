@@ -1,11 +1,12 @@
 <template>
   <div>
     <auth-form
-      @on-handle-change-email="handleChangeEmail"
-      @on-handle-change-password="handleChangePassword"
       :email="email"
       :password="password"
       :page="page"
+      @on-change-email="handleChangeEmail"
+      @on-change-password="handleChangePassword"
+      @on-register-account="handleRegisterAccount"
     />
   </div>
 </template>
@@ -13,10 +14,10 @@
 <script>
 export default {
   name: 'RegisterPage',
-  layout: 'auth',
   components: {
     AuthForm: () => import('@/components/Base/Auth/AuthForm.vue'),
   },
+  layout: 'auth',
   data: () => ({
     email: '',
     password: '',
@@ -34,6 +35,13 @@ export default {
     },
     handleChangePassword(value) {
       this.password = value
+    },
+    async handleRegisterAccount() {
+      const params = {
+        email: this.email,
+        password: this.password,
+      }
+      await this.$store.dispatch('account/registerAccount', params)
     },
   },
 }

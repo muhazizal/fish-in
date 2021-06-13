@@ -11,7 +11,7 @@ export const mutations = {
 export const actions = {
   async fishList({ commit }) {
     try {
-      const response = await this.$axios.get('/api/produk')
+      const response = await this.$axios.get('/produk')
       console.log('Response fishList: ', response)
       if (response) {
         const { data } = response

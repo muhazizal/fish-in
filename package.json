@@ -19,6 +19,7 @@
     "nuxt": "^2.15.3"
   },
   "devDependencies": {
+    "@nuxt/test-utils": "^0.2.2",
     "@nuxtjs/eslint-config": "^6.0.0",
     "@nuxtjs/eslint-module": "^3.0.2",
     "@nuxtjs/vuetify": "^1.11.3",
@@ -28,6 +29,7 @@
     "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-vue": "^7.7.0",
+    "jest": "^27.0.4",
     "prettier": "^2.2.1"
   }
 }
