@@ -9,7 +9,7 @@
           color="primary"
           large
           width="100%"
-          :to="getRouteCategory('ikan-tawar')"
+          :to="getRouteCategory('air_tawar')"
         >
           Ikan Tawar
         </v-btn>
@@ -19,7 +19,7 @@
           color="primary"
           large
           width="100%"
-          :to="getRouteCategory('ikan-laut')"
+          :to="getRouteCategory('air_laut')"
         >
           Ikan Laut
         </v-btn>
@@ -27,18 +27,16 @@
     </v-row>
   </v-container>
 </template>
-
 <script>
 export default {
   name: 'HomeFishCategory',
   methods: {
     getRouteCategory(filter) {
-      return `/category?filter=${filter}`
+      return `/kategori?jenis=${filter}`
     },
   },
 }
 </script>
-
 <style lang="scss" scoped>
 .category {
   border: 1px solid rgba($color: grey, $alpha: 0.2);

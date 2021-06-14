@@ -1,17 +1,11 @@
 export const state = () => ({
   account: {},
-  isAuthenticated: false,
 })
-
 export const mutations = {
   SET_ACCOUNT(state, payload) {
     state.account = payload
   },
-  SET_IS_AUTHENTICATED(state, payload) {
-    state.isAuthenticated = payload
-  },
 }
-
 export const actions = {
   async registerAccount({ dispatch }, params) {
     try {
@@ -32,8 +26,6 @@ export const actions = {
       console.log('Response loginAccount: ', response)
       if (response) {
         const { data, token } = response.data
-        console.log('token: ', token)
-        console.log('data: ', data)
         if (data && token) {
           this.$cookies.set('auth_token', token, {
             secure: true,
@@ -46,10 +38,28 @@ export const actions = {
       console.log(error)
     }
   },
+  async account({ commit }) {
+    try {
+      const userToken = this.$cookies.get('auth_token')
+      const response = await this.$axios.get(`/api/pembeli`, {
+        headers: {
+          authorization: userToken,
+        },
+      })
+      console.log('Response account: ', response)
+      if (response) {
+        const { data } = response.data
+        if (data) {
+          commit('SET_ACCOUNT', data)
+        }
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  },
 }
-
 export const getters = {
-  accountDetail(state) {
-    return state.accountDetail
+  getAccount(state) {
+    return state.account
   },
 }

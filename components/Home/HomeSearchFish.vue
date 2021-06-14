@@ -7,20 +7,19 @@
             Cari Ikan Berdasarkan Budget
           </h2>
         </v-col>
-
         <v-col cols="6" class="pt-0">
           <v-text-field
             v-model="price"
             type="number"
             label="Harga"
-            class="pt-0 grey--text text--darken-2"
+            class="pt-0"
             prefix="Rp."
+            color="primary"
             clearable
             hide-details
             single-line
           />
         </v-col>
-
         <v-col cols="6" class="pt-0">
           <v-text-field
             v-model="quantity"
@@ -33,7 +32,6 @@
             clearable
           />
         </v-col>
-
         <v-col cols="12" class="pt-0 mb-3">
           <v-select
             v-model="category"
@@ -47,9 +45,14 @@
             single-line
           />
         </v-col>
-
         <v-col cols="12" class="pt-0">
-          <v-btn color="#5BC695" depressed width="100%" class="white--text">
+          <v-btn
+            color="#5BC695"
+            depressed
+            width="100%"
+            class="white--text"
+            @click="handleSearchFish"
+          >
             Cari Ikan
           </v-btn>
         </v-col>
@@ -65,9 +68,22 @@ export default {
     valid: false,
     price: null,
     quantity: null,
-    category: '',
+    category: null,
     categoryOptions: ['Air Tawar', 'Air Laut'],
   }),
+  methods: {
+    handleConvertCategory() {
+      if (this.category) {
+        this.category = this.category.toLowerCase().split(' ').join('_')
+      }
+    },
+    handleSearchFish() {
+      this.handleConvertCategory()
+      return this.$router.push(
+        `/kategori?harga=${this.price}&kuantitas=${this.quantity}&jenis=${this.category}`
+      )
+    },
+  },
 }
 </script>
 

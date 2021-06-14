@@ -6,7 +6,6 @@
     <home-fish-list />
   </div>
 </template>
-
 <script>
 export default {
   name: 'HomePage',

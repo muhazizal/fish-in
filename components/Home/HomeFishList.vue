@@ -1,9 +1,10 @@
 <template>
   <div>
-    <fish-list :title="fishTitle" :items="latestProduct" />
+    <fish-list :title="fishTitle" :items="fishList" />
   </div>
 </template>
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'HomeFishList',
   components: {
@@ -13,9 +14,9 @@ export default {
     fishTitle: 'Produk Terbaru',
   }),
   computed: {
-    latestProduct() {
-      return this.$store.getters['fish/getFishList']
-    },
+    ...mapGetters({
+      fishList: 'fish/getFishList',
+    }),
   },
   async created() {
     await this.handleGetFishList()

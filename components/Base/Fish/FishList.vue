@@ -2,7 +2,7 @@
   <v-container class="mt-4 pa-0">
     <div class="d-flex justify-space-between align-center mb-3">
       <h2 class="text-subtitle-1 font-weight-medium">{{ title }}</h2>
-      <v-btn to="/" text class="pa-0 grey--text">
+      <v-btn to="/" text class="pa-3 grey--text">
         <span>Lihat Semua</span>
         <v-icon>mdi-chevron-right</v-icon>
       </v-btn>

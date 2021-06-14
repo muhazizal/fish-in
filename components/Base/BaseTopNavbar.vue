@@ -2,7 +2,6 @@
   <header class="container primary">
     <v-row>
       <v-col cols="12" class="d-flex justify-center align-center">
-        <!-- TOOD: change this app-bar-nav-icon to v-icon -->
         <router-link v-if="!needBackButton" to="/beranda">
           <v-icon color="white"> mdi-fish </v-icon>
         </router-link>
@@ -69,7 +68,7 @@ export default {
       } else if (name && name === 'pesanan-detail') {
         return params && params.username ? params.username : 'Pesanan'
       } else {
-        return name
+        return name === 'index' ? 'beranda' : name
       }
     },
     getTitleClass() {

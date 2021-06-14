@@ -12,6 +12,7 @@
       v-for="(item, index) in items"
       :key="index"
       :src="item.src"
+      eager
     />
   </v-carousel>
 </template>
@@ -23,16 +24,13 @@ export default {
       // TODO: change this src to Promo
       items: [
         {
-          src: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg',
+          src: require('~/assets/images/promo-1.jpg'),
         },
         {
-          src: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg',
+          src: require('~/assets/images/promo-2.png'),
         },
         {
-          src: 'https://cdn.vuetifyjs.com/images/carousel/bird.jpg',
-        },
-        {
-          src: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg',
+          src: require('~/assets/images/promo-3.png'),
         },
       ],
     }

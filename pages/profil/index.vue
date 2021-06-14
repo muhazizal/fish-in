@@ -15,6 +15,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'ProfilePage',
   components: {
@@ -36,18 +37,12 @@ export default {
     }
   },
   computed: {
-    accountDetail() {
-      return this.$store.getters['account/accountDetail']
-    },
+    ...mapGetters({
+      account: 'account/getAccount',
+    }),
   },
-  async created() {
-    await this.getAccountDetail()
-    // console.log(this.accountDetail)
-  },
-  methods: {
-    async getAccountDetail() {
-      await this.$store.dispatch('account/getAccountDetail')
-    },
+  mounted() {
+    console.log(this.account)
   },
 }
 </script>

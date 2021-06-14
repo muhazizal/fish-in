@@ -5,13 +5,15 @@
         <img
           class="img-category"
           lazy-src="https://picsum.photos/id/11/10/6"
-          src="https://picsum.photos/id/11/500/300"
+          :src="item.img"
         />
       </v-col>
       <v-col cols="7" class="d-flex align-start">
         <div>
-          <h4 class="text-subtitle-1 font-weight-medium">{{ item.nama }}</h4>
-          <v-icon
+          <h4 class="text-subtitle-1 font-weight-medium">
+            {{ item.nama_produk }}
+          </h4>
+          <!-- <v-icon
             v-for="n in 5"
             :key="n.id"
             small
@@ -24,9 +26,9 @@
           <small class="text-caption grey--text">
             ({{ item.review }}
             review)
-          </small>
+          </small> -->
           <h5 class="font-weight-regular grey--text text--darken-1">
-            {{ convertedHargaKg }}/kg | {{ convertedHargaOns }}/ons
+            {{ convertedHargaKg }}/kg
           </h5>
         </div>
       </v-col>
@@ -49,10 +51,7 @@ export default {
   },
   computed: {
     convertedHargaKg() {
-      return rupiahCurrency(this.item.harga_kg, 0, 'Rp.', '.')
-    },
-    convertedHargaOns() {
-      return rupiahCurrency(this.item.harga_ons, 0, 'Rp.', '.')
+      return rupiahCurrency(this.item.harga, 0, 'Rp.', '.')
     },
   },
 }

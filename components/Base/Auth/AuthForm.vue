@@ -40,8 +40,8 @@
     <v-container class="text-center px-0">
       <v-btn
         width="100%"
-        :loading="loading"
-        :disabled="loading"
+        :loading="loadingApp"
+        :disabled="loadingApp"
         color="primary"
         large
         @click="handleDispatchAuth"
@@ -85,9 +85,12 @@ export default {
       type: String,
       default: '',
     },
+    loadingApp: {
+      type: Boolean,
+      default: false,
+    },
   },
   data: () => ({
-    loading: false,
     showPassword: false,
     valid: true,
     select: null,
@@ -102,7 +105,6 @@ export default {
       (v) => (v && v.length >= 8) || 'Password must be more than 8 characters',
     ],
   }),
-
   computed: {
     getNameMethod() {
       return this.page && this.page === 'login' ? 'Masuk' : 'Daftar'
@@ -138,13 +140,12 @@ export default {
     handleAuthMethod() {
       return this.page === 'login' ? 'on-login-account' : 'on-register-account'
     },
-    handleDispatchAuth() {
+    async handleDispatchAuth() {
       const authMethod = this.handleAuthMethod()
-      this.$emit(authMethod, {
+      await this.$emit(authMethod, {
         email: this.inputEmail,
         password: this.inputPassword,
       })
-      this.loading = false
     },
   },
 }

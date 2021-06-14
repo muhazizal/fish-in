@@ -5,14 +5,14 @@
       <v-card-title
         class="px-3 pt-3 pb-0 text-subtitle-1 d-flex justify-space-between"
       >
-        {{ item.name }}
+        {{ item.nama_produk }}
         <v-icon v-if="showBookmark" color="#5BC695"> mdi-bookmark </v-icon>
       </v-card-title>
       <v-card-subtitle class="ma-0 px-3 py-1" :class="discountedPriceStyle">
         {{ convertedPrice }}/kg
       </v-card-subtitle>
       <v-card-subtitle
-        v-if="item.discountedPrice"
+        v-if="item.harga_diskon"
         class="ma-0 px-3 pt-0 pb-3 orange--text"
       >
         {{ convertedDiscountPrice }}/kg
@@ -40,13 +40,13 @@ export default {
   },
   computed: {
     convertedPrice() {
-      return rupiahCurrency(this.item.price, 0, 'Rp.', '.')
+      return rupiahCurrency(this.item.harga, 0, 'Rp.', '.')
     },
     convertedDiscountPrice() {
-      return rupiahCurrency(this.item.discountedPrice, 0, 'Rp.', '.')
+      return rupiahCurrency(this.item.harga_diskon, 0, 'Rp.', '.')
     },
     discountedPriceStyle() {
-      return this.item.discountedPrice
+      return this.item.harga_diskon
         ? 'text-decoration-line-through grey--text'
         : 'pb-3'
     },

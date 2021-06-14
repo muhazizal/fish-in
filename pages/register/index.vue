@@ -4,6 +4,7 @@
       :email="email"
       :password="password"
       :page="page"
+      :loading-app="loadingApp"
       @on-change-email="handleChangeEmail"
       @on-change-password="handleChangePassword"
       @on-register-account="handleRegisterAccount"
@@ -22,6 +23,7 @@ export default {
     email: '',
     password: '',
     page: 'register',
+    loadingApp: false,
   }),
   head() {
     return {
@@ -37,11 +39,13 @@ export default {
       this.password = value
     },
     async handleRegisterAccount() {
+      this.loadingApp = true
       const params = {
         email: this.email,
         password: this.password,
       }
       await this.$store.dispatch('account/registerAccount', params)
+      this.loadingApp = false
     },
   },
 }

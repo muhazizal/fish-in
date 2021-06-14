@@ -1,11 +1,12 @@
 <template>
   <div>
     <base-search class="mb-4" :label="searchLabel" />
-    <fish-list-category :items="listCategory" />
+    <fish-list-category :items="filteredFishList" />
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'CategoryPage',
   components: {
@@ -30,33 +31,49 @@ export default {
     }
   },
   computed: {
-    listCategory() {
-      return [
-        {
-          id: 1,
-          nama: 'Ikan Lele',
-          rating: 4,
-          review: 20,
-          harga_kg: 50000,
-          harga_ons: 1250,
-        },
-        {
-          id: 2,
-          nama: 'Ikan Tongkol',
-          rating: 2,
-          review: 15,
-          harga_kg: 10000,
-          harga_ons: 2250,
-        },
-        {
-          id: 3,
-          nama: 'Kepiting',
-          rating: 5,
-          review: 10,
-          harga_kg: 110000,
-          harga_ons: 5250,
-        },
-      ]
+    ...mapGetters({
+      fishList: 'fish/getFishList',
+    }),
+    filteredFishList() {
+      const { query } = this.$route
+      console.log('query: ', query)
+      if (query) {
+        const filteredFishList = this.fishList.filter((fish) => {
+          for (const key in query) {
+            if (key === 'harga' || key === 'kuantitas') {
+              query[key] = parseInt(query[key])
+              if (fish[key] === undefined || fish[key] < query[key]) {
+                return false
+              }
+            }
+            if (key === 'jenis') {
+              if (fish[key] === undefined || fish[key] !== query[key]) {
+                return false
+              }
+            }
+            if (key === 'nama_produk') {
+              if (
+                fish[key] === undefined ||
+                fish[key].toLowerCase() !==
+                  query[key].split('_').join(' ').toLowerCase()
+              ) {
+                return false
+              }
+            }
+          }
+          return true
+        })
+        return filteredFishList
+      }
+      return [{}]
+    },
+  },
+  async created() {
+    await this.handleGetFishList()
+  },
+  methods: {
+    async handleGetFishList() {
+      await this.$store.dispatch('fish/fishList')
     },
   },
 }

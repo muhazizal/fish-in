@@ -17,7 +17,7 @@
           {{ item.icon }}
         </v-icon>
         <span class="d-block" style="font-size: 10px">
-          {{ item.name }}
+          {{ getName(item.name) }}
         </span>
       </nuxt-link>
     </v-bottom-navigation>
@@ -30,8 +30,8 @@ export default {
   data: () => ({
     links: [
       {
-        name: 'Beranda',
-        link: '/beranda',
+        name: 'Index',
+        link: '/',
         icon: 'mdi-home',
       },
       {
@@ -51,12 +51,15 @@ export default {
       },
       {
         name: 'Profil',
-        link: '/profil/:username',
+        link: '/profil',
         icon: 'mdi-account',
       },
     ],
   }),
   methods: {
+    getName(name) {
+      return name === 'Index' ? 'Beranda' : name
+    },
     getLinkStyle(name) {
       let routerName = this.$route.name
       const convertedName = name.toLowerCase()

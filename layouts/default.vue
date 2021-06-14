@@ -46,5 +46,13 @@ export default {
       }
     },
   },
+  async created() {
+    await this.handleGetAccount()
+  },
+  methods: {
+    async handleGetAccount() {
+      await this.$store.dispatch('account/account')
+    },
+  },
 }
 </script>

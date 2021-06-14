@@ -1,7 +1,6 @@
 <template>
   <v-col v-if="getOptions" cols="12" class="d-flex justify-center">
     <v-container class="pa-0">
-      <!-- TODO: add dynamic class to route v-btn on active class -->
       <v-btn
         v-for="(option, index) in getOptions"
         :key="index"
@@ -36,20 +35,20 @@ export default {
           },
         ]
       }
-
       if (routeName === 'kategori') {
         return [
           {
             name: 'Air Tawar',
-            method: async () => await this.handleOnClickProses(),
+            method: () =>
+              this.handleRedirectTab('kategori', 'jenis', 'air_tawar'),
           },
           {
             name: 'Air Laut',
-            method: async () => await this.handleOnClickSelesai(),
+            method: () =>
+              this.handleRedirectTab('kategori', 'jenis', 'air_laut'),
           },
         ]
       }
-
       if (routeName === 'pesanan') {
         return [
           {
@@ -62,35 +61,12 @@ export default {
           },
         ]
       }
-
       return false
     },
   },
   methods: {
-    // TODO: add async await function here
-    handleOnClickLatest() {
-      console.log('latest')
-      // await this.$store.dispatch('message/fetchLatest')
-    },
-    handleOnClickCompleted() {
-      console.log('completed')
-      // await this.$store.dispatch('message/fetchCompleted')
-    },
-    handleOnClickProses() {
-      console.log('Proses')
-      // await this.$store.dispatch('message/fetchCompleted')
-    },
-    handleOnClickSelesai() {
-      console.log('Selesai')
-      // await this.$store.dispatch('message/fetchCompleted')
-    },
-    handleOnClickTawar() {
-      console.log('Tawar')
-      // await this.$store.dispatch('message/fetchCompleted')
-    },
-    handleOnClickLaut() {
-      console.log('Laut')
-      // await this.$store.dispatch('message/fetchCompleted')
+    handleRedirectTab(name, query, value) {
+      return this.$router.push(`/${name}?${query}=${value}`)
     },
   },
 }
