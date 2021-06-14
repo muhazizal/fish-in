@@ -33,7 +33,9 @@
         </div>
       </v-col>
       <v-col cols="1" class="d-flex align-center">
-        <v-icon color="grey">mdi-chevron-right</v-icon>
+        <v-icon color="primary" @click="handleShowDialogProduct"
+          >mdi-plus-circle-outline</v-icon
+        >
       </v-col>
     </v-row>
   </div>
@@ -52,6 +54,11 @@ export default {
   computed: {
     convertedHargaKg() {
       return rupiahCurrency(this.item.harga, 0, 'Rp.', '.')
+    },
+  },
+  methods: {
+    handleShowDialogProduct() {
+      console.log('dialog')
     },
   },
 }

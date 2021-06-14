@@ -36,12 +36,12 @@ export default {
         content: '1301180044 - Frontend Developer',
       },
       {
-        img: '',
+        img: require('~/assets/images/pp-maul.jpg'),
         fullname: 'Maulana Irfan Firdian',
         content: '1301180294 - Frontend Developer',
       },
       {
-        img: '',
+        img: require('~/assets/images/pp-apink.jpg'),
         fullname: 'Naufal Alvin Chandrasa',
         content: '1301180214 - Frontend Developer',
       },

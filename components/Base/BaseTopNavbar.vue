@@ -21,7 +21,7 @@
           class="pl-3 text-decoration-none"
           :style="getVisibilityHidden"
         >
-          <v-icon color="white">mdi-bell</v-icon>
+          <v-icon color="white">mdi-cart</v-icon>
         </router-link>
       </v-col>
       <base-tab-options />
