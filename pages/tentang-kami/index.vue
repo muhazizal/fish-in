@@ -36,7 +36,7 @@ export default {
         content: '1301180044 - Frontend Developer',
       },
       {
-        img: require('~/assets/images/pp-maul.jpg'),
+        img: require('~/assets/images/pp-maul.png'),
         fullname: 'Maulana Irfan Firdian',
         content: '1301180294 - Frontend Developer',
       },

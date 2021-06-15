@@ -5,7 +5,7 @@ export default {
   ssr: true,
 
   // Target: https://go.nuxtjs.dev/config-target
-  target: 'server',
+  // target: 'server',
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -40,18 +40,18 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    proxy: true,
+    baseUrl: "https://fishin-api-server.herokuapp.com/api/",
     credentials: true,
   },
 
   // Proxy module configuration
-  proxy: {
-    '/api/': {
-      target: process.env.API_URL,
-      secure: true,
-      changeOrigin: true,
-    },
-  },
+  // proxy: {
+  //   '/api/': {
+  //     target: process.env.API_URL,
+  //     secure: true,
+  //     changeOrigin: true,
+  //   },
+  // },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
