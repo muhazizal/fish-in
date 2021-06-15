@@ -5,7 +5,7 @@ export default {
   ssr: true,
 
   // Target: https://go.nuxtjs.dev/config-target
-  // target: 'server',
+  target: 'server',
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -40,7 +40,7 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseUrl: "https://fishin-api-server.herokuapp.com/api/",
+    baseUrl: 'https://fishin-api-server.herokuapp.com',
     credentials: true,
   },
 

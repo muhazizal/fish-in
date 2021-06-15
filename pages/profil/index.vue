@@ -1,7 +1,6 @@
 <template>
   <v-container class="pa-0">
-    <dialog-profile />
-    <profile-account-info />
+    <profile-account />
     <profile-bookmark />
     <profile-more-info />
     <v-row>
@@ -15,12 +14,10 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
 export default {
   name: 'ProfilePage',
   components: {
-    DialogProfile: () => import('@/components/Profile/Dialog/DialogProfile'),
-    ProfileAccountInfo: () => import('@/components/Profile/ProfileAccountInfo'),
+    ProfileAccount: () => import('@/components/Profile/ProfileAccount'),
     ProfileBookmark: () => import('@/components/Profile/ProfileBookmark'),
     ProfileMoreInfo: () => import('@/components/Profile/ProfileMoreInfo'),
   },
@@ -35,14 +32,6 @@ export default {
         },
       ],
     }
-  },
-  computed: {
-    ...mapGetters({
-      account: 'account/getAccount',
-    }),
-  },
-  mounted() {
-    console.log(this.account)
   },
 }
 </script>

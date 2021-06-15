@@ -6,8 +6,6 @@
       Informasi Tambahan
     </h2>
     <v-container class="ma-4 mt-1">
-      <dialog-feedback />
-      <v-divider class="my-3 mr-3"></v-divider>
       <dialog-faq />
       <v-divider class="my-3 mr-3"></v-divider>
       <dialog-about-us />
@@ -19,7 +17,6 @@
 export default {
   name: 'ProfileMoreInfo',
   components: {
-    DialogFeedback: () => import('./Dialog/DialogFeedback'),
     DialogFaq: () => import('./Dialog/DialogFaq'),
     DialogAboutUs: () => import('./Dialog/DialogAboutUs'),
   },

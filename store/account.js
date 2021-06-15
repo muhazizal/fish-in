@@ -10,7 +10,7 @@ export const actions = {
   async registerAccount({ dispatch }, params) {
     try {
       console.log('Params registerAccount: ', params)
-      const response = await this.$axios.$post('pembeli/register/', params)
+      const response = await this.$axios.$post('/api/pembeli/register/', params)
       console.log('Response registerAccount: ', response)
       if (response) {
         await dispatch('loginAccount', params)
@@ -22,10 +22,10 @@ export const actions = {
   async loginAccount({ commit }, params) {
     try {
       console.log('Params loginAccount: ', params)
-      const response = await this.$axios.$post('pembeli/login/', params)
+      const response = await this.$axios.$post('/api/pembeli/login/', params)
       console.log('Response loginAccount: ', response)
       if (response) {
-        const { data, token } = response.data
+        const { data, token } = response
         if (data && token) {
           this.$cookies.set('auth_token', token, {
             secure: true,
@@ -47,6 +47,25 @@ export const actions = {
         },
       })
       console.log('Response account: ', response)
+      if (response) {
+        const { data } = response.data
+        if (data) {
+          commit('SET_ACCOUNT', data)
+        }
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  },
+  async editProfile({ commit }, params) {
+    try {
+      const userToken = this.$cookies.get('auth_token')
+      const response = await this.$axios.put(`/api/pembeli/`, params, {
+        headers: {
+          authorization: userToken,
+        },
+      })
+      console.log('Response editProfile: ', response)
       if (response) {
         const { data } = response.data
         if (data) {

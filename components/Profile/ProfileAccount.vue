@@ -10,9 +10,11 @@
             />
           </v-avatar>
           <div class="d-flex flex-column mr-auto">
-            <span class="text-subtitle-1">Bang Jago</span>
+            <span class="text-subtitle-1">
+              {{ account.nama_pembeli }}
+            </span>
             <span class="text-subtitle-2 font-weight-regular grey--text">
-              bangjago@gmail.com
+              {{ account.email_pembeli }}
             </span>
           </div>
           <v-btn text depressed plain small v-bind="attrs" v-on="on">
@@ -20,20 +22,29 @@
           </v-btn>
         </v-container>
       </template>
-      <dialog-profile-content @handleDialogToggle="handleDialogToggle" />
+      <dialog-edit-profile
+        :account="account"
+        @handleDialogToggle="handleDialogToggle"
+      />
     </v-dialog>
   </v-row>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
-  name: 'DialogProfile',
+  name: 'ProfileAccount',
   components: {
-    DialogProfileContent: () => import('./DialogProfileContent'),
+    DialogEditProfile: () => import('./Dialog/DialogEditProfile.vue'),
   },
   data: () => ({
     dialog: false,
   }),
+  computed: {
+    ...mapGetters({
+      account: 'account/getAccount',
+    }),
+  },
   methods: {
     handleDialogToggle(value) {
       this.dialog = value

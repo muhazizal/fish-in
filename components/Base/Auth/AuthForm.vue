@@ -101,7 +101,7 @@ export default {
       (v) => /.+@.+\..+/.test(v) || 'E-mail must be valid',
     ],
     passwordRules: [
-      (v) => !!v || 'Password Required',
+      (v) => !!v || 'Password is Required',
       (v) => (v && v.length >= 8) || 'Password must be more than 8 characters',
     ],
   }),
@@ -140,9 +140,9 @@ export default {
     handleAuthMethod() {
       return this.page === 'login' ? 'on-login-account' : 'on-register-account'
     },
-    async handleDispatchAuth() {
+    handleDispatchAuth() {
       const authMethod = this.handleAuthMethod()
-      await this.$emit(authMethod, {
+      this.$emit(authMethod, {
         email: this.inputEmail,
         password: this.inputPassword,
       })
