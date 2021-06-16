@@ -32,27 +32,10 @@
     <div class="my-3">
       <div class="d-flex align-center justify-space-between mb-2">
         <div>
-          <small class="mt-2 text-grey font-weight-light"> Jumlah Ikan </small>
+          <small class="mt-2 text-grey font-weight-light"> Harga Ikan </small>
         </div>
         <div>
-          <small>{{ item.jumlahIkan }}kg x {{ convertedHargaIkan }}</small>
-        </div>
-      </div>
-      <div class="d-flex align-center justify-space-between mb-2">
-        <div>
-          <small class="mt-2 text-grey font-weight-light">Ongkir</small>
-        </div>
-        <div>
-          <small>{{ convertedOngkir }}</small>
-        </div>
-      </div>
-
-      <div class="d-flex align-center justify-space-between mt-2">
-        <div>
-          <small class="mt-2">Total Harga</small>
-        </div>
-        <div>
-          <small> {{ convertedTotalHarga }}</small>
+          <small> {{ convertedHargaIkan }}</small>
         </div>
       </div>
     </div>
@@ -99,12 +82,6 @@ export default {
     convertedHargaIkan() {
       console.log(this.item)
       return rupiahCurrency(this.item.hargaIkan, 0, 'Rp.', '.')
-    },
-    convertedHargaOns() {
-      return rupiahCurrency(this.item.harga_ons, 0, 'Rp.', '.')
-    },
-    convertedOngkir() {
-      return rupiahCurrency(this.item.ongkir, 0, 'Rp.', '.')
     },
     convertedTotalHarga() {
       const totalHarga =
