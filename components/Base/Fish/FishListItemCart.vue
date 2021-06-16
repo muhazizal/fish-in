@@ -25,22 +25,10 @@
           <span>{{ item.jumlahIkan }}kg x {{ convertedHargaIkan }}</span>
         </div>
       </div>
-      <div class="d-flex align-center justify-space-between mb-2">
-        <div>
-          <small class="mt-2 text-grey font-weight-light">Ongkir</small>
-        </div>
-        <div>
-          <span>{{ convertedOngkir }}</span>
-        </div>
-      </div>
-      <v-divider></v-divider>
-      <div class="d-flex align-center justify-space-between mt-2">
-        <div>
-          <span class="mt-2">Total Harga</span>
-        </div>
-        <div>
-          <span> {{ convertedTotalHarga }}</span>
-        </div>
+      <div class="d-flex">
+        <v-btn small depressed class="mx-auto mt-5" color="primary">
+          Review Produk
+        </v-btn>
       </div>
     </v-card>
   </div>
@@ -57,16 +45,8 @@ export default {
     },
   },
   computed: {
-    convertedOngkir() {
-      return rupiahCurrency(this.item.ongkir, 0, 'Rp.', '.')
-    },
     convertedHargaIkan() {
       return rupiahCurrency(this.item.hargaIkan, 0, 'Rp.', '.')
-    },
-    convertedTotalHarga() {
-      const totalHarga =
-        this.item.jumlahIkan * this.item.hargaIkan + this.item.ongkir
-      return rupiahCurrency(totalHarga, 0, 'Rp.', '.')
     },
   },
 }
