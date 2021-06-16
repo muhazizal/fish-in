@@ -41,7 +41,7 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     baseUrl: 'https://fishin-api-server.herokuapp.com',
-    credentials: true,
+    credentials: false,
   },
 
   // Proxy module configuration

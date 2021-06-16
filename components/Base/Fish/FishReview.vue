@@ -28,31 +28,35 @@
         </div></v-col
       >
     </v-row>
-    <v-divider></v-divider>
-    <div class="my-3">
-      <div class="d-flex align-center justify-space-between mb-2">
-        <div>
-          <small class="mt-2 text-grey font-weight-light"> Harga Ikan </small>
-        </div>
-        <div>
-          <small> {{ convertedHargaIkan }}</small>
-        </div>
-      </div>
-    </div>
+
     <v-divider></v-divider>
 
     <v-divider></v-divider>
-    <div>
-      <v-textarea
-        solo
-        class="mt-3"
-        label="Berikan komentarmu"
-        hide-details="auto"
-      ></v-textarea>
-    </div>
-    <v-select class="mt-3" :items="items" label="Bintang" required></v-select>
-    <div class="my-3">
-      <button-finish title="Submit" />
+    <div class="mx-auto">
+      <v-col cols="12" md="6">
+        <v-textarea
+          solo
+          name="input-7-4"
+          label="Berikan komentarmu"
+        ></v-textarea>
+      </v-col>
+      <div class="text-center m-0">
+        <v-rating
+          v-model="rating"
+          color="yellow darken-3"
+          background-color="grey darken-1"
+          empty-icon="$ratingFull"
+          half-increments
+          hover
+          large
+        ></v-rating>
+      </div>
+
+      <v-divider></v-divider>
+      <v-card-actions class="justify-space-between">
+        <v-btn text> No Thanks </v-btn>
+        <v-btn color="primary" text> Rate Now </v-btn>
+      </v-card-actions>
     </div>
   </div>
 </template>
@@ -62,11 +66,9 @@ import { rupiahCurrency } from '@/utils/currency'
 
 export default {
   name: 'FishDetailPesanan',
-  components: {
-    ButtonFinish: () => import('~/components/Base/ButtonFinish'),
-  },
+  components: {},
   data: () => ({
-    items: ['Bintang 1', 'Bintang 2', 'Bintang 3', 'Bintang 4', 'Bintang 5'],
+    rating: 4.5,
   }),
   props: {
     title: {
@@ -82,11 +84,6 @@ export default {
     convertedHargaIkan() {
       console.log(this.item)
       return rupiahCurrency(this.item.hargaIkan, 0, 'Rp.', '.')
-    },
-    convertedTotalHarga() {
-      const totalHarga =
-        this.item.jumlahIkan * this.item.hargaIkan + this.item.ongkir
-      return rupiahCurrency(totalHarga, 0, 'Rp.', '.')
     },
   },
 }
