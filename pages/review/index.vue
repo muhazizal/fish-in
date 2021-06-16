@@ -3,10 +3,10 @@
 </template>
 <script>
 export default {
-  name: 'PesananDetailPage',
+  name: 'ReviewPage',
 
   created() {
-    this.$router.replace('pesanan-detail/1')
+    this.$router.replace('review/1')
   },
 }
 </script>

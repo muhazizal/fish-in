@@ -67,6 +67,8 @@ export default {
         return 'notifikasi'
       } else if (name && name === 'pesanan-detail') {
         return params && params.username ? params.username : 'Pesanan'
+      } else if (name && name === 'review-id') {
+        return 'review'
       } else {
         return name === 'index' ? 'beranda' : name
       }
