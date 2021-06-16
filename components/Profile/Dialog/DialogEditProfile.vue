@@ -24,6 +24,7 @@
                 type="email"
                 label="E-mail"
                 required
+                disabled
                 validate-on-blur
                 @input="handleChangeEmail"
               />
@@ -36,7 +37,6 @@
                 required
                 validate-on-blur
                 @input="handleChangePhonenumber"
-                @keydown="handleValidatePhonenumber"
               />
             </v-col>
             <v-col cols="12" class="px-0 pb-0">
@@ -66,7 +66,7 @@
     </v-card-text>
     <v-card-actions>
       <v-spacer></v-spacer>
-      <v-btn color="blue darken-1" text @click="handleCloseDialog">
+      <v-btn color="red darken-1" text @click="handleCloseDialog">
         Batal
       </v-btn>
       <v-btn
@@ -132,6 +132,7 @@ export default {
         nama: this.inputName,
         alamat: this.inputAddress,
         no_telp: this.inputPhonenumber,
+        password: this.inputPassword,
       }
       this.loadingApp = true
       try {
@@ -156,10 +157,6 @@ export default {
     },
     handleChangePassword(value) {
       this.inputPassword = value
-    },
-    // TODO: validate phonenumber input
-    handleValidatePhonenumber(event) {
-      console.log(event)
     },
     handleInitInput() {
       if (this.account) {

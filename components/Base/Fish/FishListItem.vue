@@ -6,16 +6,35 @@
         class="px-3 pt-3 pb-0 text-subtitle-1 d-flex justify-space-between"
       >
         {{ item.nama_produk }}
-        <v-icon v-if="showBookmark" color="#5BC695"> mdi-bookmark </v-icon>
+        <v-icon
+          :color="getBookmarkColor"
+          @click="handleBookmarkFish(item.id_penyimpanan)"
+        >
+          mdi-bookmark
+        </v-icon>
       </v-card-title>
-      <v-card-subtitle class="ma-0 px-3 py-1" :class="discountedPriceStyle">
-        {{ convertedPrice }}/kg
+      <v-card-subtitle class="ma-0 px-3 py-1 d-flex justify-space-between">
+        <span :class="discountedPriceStyle">{{ convertedPrice }}/kg</span>
+        <v-rating
+          v-model="getRating"
+          background-color="orange lighten-3"
+          color="orange"
+          dense
+          small
+          readonly
+        />
       </v-card-subtitle>
       <v-card-subtitle
         v-if="item.harga_diskon"
-        class="ma-0 px-3 pt-0 pb-3 orange--text"
+        class="ma-0 px-3 py-1 orange--text"
       >
         {{ convertedDiscountPrice }}/kg
+      </v-card-subtitle>
+      <v-card-subtitle class="ma-0 px-3 py-1">
+        Stok: {{ item.stok }}
+      </v-card-subtitle>
+      <v-card-subtitle class="ma-0 px-3 py-1 pb-3">
+        Penjual: {{ item.nama_penjual }}
       </v-card-subtitle>
     </v-card>
   </div>
@@ -33,14 +52,11 @@ export default {
       type: Boolean,
       default: false,
     },
-    showBookmark: {
-      type: Boolean,
-      default: false,
-    },
   },
   computed: {
     convertedPrice() {
-      return rupiahCurrency(this.item.harga, 0, 'Rp.', '.')
+      const harga = this.item.harga + this.item.harga_toko
+      return rupiahCurrency(harga, 0, 'Rp.', '.')
     },
     convertedDiscountPrice() {
       return rupiahCurrency(this.item.harga_diskon, 0, 'Rp.', '.')
@@ -48,10 +64,59 @@ export default {
     discountedPriceStyle() {
       return this.item.harga_diskon
         ? 'text-decoration-line-through grey--text'
-        : 'pb-3'
+        : ''
     },
     getMarginClass() {
       return this.hideMargin ? '' : 'mr-4 mb-4'
+    },
+    getBookmarkColor() {
+      if (this.item && this.item.status) {
+        return '#5BC695'
+      }
+      return 'grey lighten-1'
+    },
+    getRating() {
+      return 4
+    },
+  },
+  methods: {
+    async handleBookmarkFish(id) {
+      try {
+        const userToken = this.$cookies.get('auth_token')
+        let response
+        if (!status) {
+          response = await this.$axios.post(
+            '/api/bookmark',
+            {
+              id,
+            },
+            {
+              headers: {
+                authorization: userToken,
+              },
+            }
+          )
+        } else {
+          response = await this.$axios.put(
+            '/api/bookmark',
+            {
+              id,
+              status: false,
+            },
+            {
+              headers: {
+                authorization: userToken,
+              },
+            }
+          )
+        }
+        console.log('Response bookmarkFish: ', response)
+        if (response) {
+          await this.dispatch('fish/fishList')
+        }
+      } catch (error) {
+        console.log('Error bookmarkFish: ', error)
+      }
     },
   },
 }

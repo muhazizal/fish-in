@@ -31,12 +31,6 @@
       @input="handleChangePassword"
     ></v-text-field>
 
-    <div class="text-right mt-2">
-      <router-link to="" class="text-decoration-none">
-        Lupa Password?
-      </router-link>
-    </div>
-
     <v-container class="text-center px-0">
       <v-btn
         width="100%"
@@ -44,9 +38,21 @@
         :disabled="loadingApp"
         color="primary"
         large
-        @click="handleDispatchAuth"
+        class="mt-3"
+        @click="handleDispatchAuthPembeli"
       >
-        {{ getNameMethod }}
+        {{ getNameMethodPembeli }}
+      </v-btn>
+      <v-btn
+        width="100%"
+        :loading="loadingApp"
+        :disabled="loadingApp"
+        color="primary"
+        large
+        class="mt-3"
+        @click="handleDispatchAuthPenjual"
+      >
+        {{ getNameMethodPenjual }}
       </v-btn>
     </v-container>
 
@@ -106,8 +112,15 @@ export default {
     ],
   }),
   computed: {
-    getNameMethod() {
-      return this.page && this.page === 'login' ? 'Masuk' : 'Daftar'
+    getNameMethodPembeli() {
+      return this.page && this.page === 'login'
+        ? 'Masuk Sebagai Pembeli'
+        : 'Daftar Sebagai Pembeli'
+    },
+    getNameMethodPenjual() {
+      return this.page && this.page === 'login'
+        ? 'Masuk Sebagai Penjual'
+        : 'Daftar Sebagai Penjual'
     },
     getNameRedirect() {
       return this.page && this.page === 'login' ? 'Daftar' : 'Masuk'
@@ -140,9 +153,18 @@ export default {
     handleAuthMethod() {
       return this.page === 'login' ? 'on-login-account' : 'on-register-account'
     },
-    handleDispatchAuth() {
+    handleDispatchAuthPembeli() {
       const authMethod = this.handleAuthMethod()
       this.$emit(authMethod, {
+        role: 'pembeli',
+        email: this.inputEmail,
+        password: this.inputPassword,
+      })
+    },
+    handleDispatchAuthPenjual() {
+      const authMethod = this.handleAuthMethod()
+      this.$emit(authMethod, {
+        role: 'penjual',
         email: this.inputEmail,
         password: this.inputPassword,
       })
@@ -150,4 +172,3 @@ export default {
   },
 }
 </script>
-<style lang="scss" scoped></style>

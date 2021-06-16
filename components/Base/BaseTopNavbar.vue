@@ -2,7 +2,7 @@
   <header class="container primary">
     <v-row>
       <v-col cols="12" class="d-flex justify-center align-center">
-        <router-link v-if="!needBackButton" to="/beranda">
+        <router-link v-if="!needBackButton" to="/">
           <v-icon color="white"> mdi-fish </v-icon>
         </router-link>
         <v-icon v-else color="white" @click="backToPreviousPage()">
@@ -17,7 +17,7 @@
         </v-toolbar-title>
         <v-spacer></v-spacer>
         <router-link
-          to="/notification"
+          to="/cart"
           class="pl-3 text-decoration-none"
           :style="getVisibilityHidden"
         >
@@ -42,9 +42,7 @@ export default {
         (name && name === 'tentang-kami') ||
         (name && name === 'bookmark') ||
         (name && name === 'obrolan-username') ||
-        (name && name === 'notifikasi') ||
-        (name && name === 'pesanan-detail') ||
-        (name && name === 'metode-pembayaran')
+        (name && name === 'pesanan-detail')
       ) {
         return true
       } else {
@@ -59,12 +57,8 @@ export default {
         return 'tentang kami'
       } else if (name && name === 'bookmark') {
         return 'daftar bookmark'
-      } else if (name && name === 'metode-pembayaran') {
-        return 'metode pembayaran'
       } else if (name && name === 'obrolan-username') {
         return params && params.username ? params.username : 'username'
-      } else if (name && name === 'notifikasi') {
-        return 'notifikasi'
       } else if (name && name === 'pesanan-detail') {
         return params && params.username ? params.username : 'Pesanan'
       } else if (name && name === 'review-id') {
@@ -93,7 +87,7 @@ export default {
   },
   methods: {
     goToHome() {
-      return this.$router.push('/beranda')
+      return this.$router.push('/')
     },
     backToPreviousPage() {
       return this.$router.back()

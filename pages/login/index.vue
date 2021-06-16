@@ -37,12 +37,8 @@ export default {
     handleChangePassword(value) {
       this.password = value
     },
-    async handleLoginAccount() {
+    async handleLoginAccount(params) {
       this.loadingApp = true
-      const params = {
-        email: this.email,
-        password: this.password,
-      }
       await this.$store.dispatch('account/loginAccount', params)
       this.loadingApp = false
     },
