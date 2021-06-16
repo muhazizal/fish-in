@@ -113,14 +113,10 @@ export default {
   }),
   computed: {
     getNameMethodPembeli() {
-      return this.page && this.page === 'login'
-        ? 'Masuk Sebagai Pembeli'
-        : 'Daftar Sebagai Pembeli'
+      return this.page && this.page === 'login' ? 'Masuk' : 'Daftar'
     },
     getNameMethodPenjual() {
-      return this.page && this.page === 'login'
-        ? 'Masuk Sebagai Penjual'
-        : 'Daftar Sebagai Penjual'
+      return this.page && this.page === 'login' ? 'Masuk' : 'Daftar'
     },
     getNameRedirect() {
       return this.page && this.page === 'login' ? 'Daftar' : 'Masuk'
