@@ -5,7 +5,16 @@
     <profile-more-info />
     <v-row>
       <v-col cols="12" class="px-4 pt-0">
-        <v-btn large elevation="2" color="white" class="red--text" width="100%">
+        <v-btn
+          large
+          elevation="2"
+          color="red lighten-1"
+          class="white--text"
+          width="100%"
+          :disabled="loading"
+          :loading="loading"
+          @click="handleLogoutAccount"
+        >
           Keluar
         </v-btn>
       </v-col>
@@ -21,6 +30,11 @@ export default {
     ProfileBookmark: () => import('@/components/Profile/ProfileBookmark'),
     ProfileMoreInfo: () => import('@/components/Profile/ProfileMoreInfo'),
   },
+  data() {
+    return {
+      loading: false,
+    }
+  },
   head() {
     return {
       title: 'Profil',
@@ -32,6 +46,14 @@ export default {
         },
       ],
     }
+  },
+  methods: {
+    handleLogoutAccount() {
+      this.loading = true
+      this.$store.dispatch('account/logoutAccount')
+      this.loading = false
+      this.$router.push('/')
+    },
   },
 }
 </script>

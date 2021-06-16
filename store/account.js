@@ -5,6 +5,9 @@ export const mutations = {
   SET_ACCOUNT(state, payload) {
     state.account = payload
   },
+  RESET_ACCOUNT(state) {
+    state.account = {}
+  },
 }
 export const actions = {
   async registerAccount({ dispatch }, params) {
@@ -74,6 +77,13 @@ export const actions = {
       }
     } catch (error) {
       console.log(error)
+    }
+  },
+  logoutAccount({ commit }) {
+    const userToken = this.$cookies.get('auth_token')
+    if (userToken) {
+      this.$cookies.remove('auth_token')
+      commit('RESET_ACCOUNT')
     }
   },
 }
