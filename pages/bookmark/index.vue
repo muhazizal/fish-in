@@ -8,11 +8,7 @@
         cols="12"
         class="px-2 py-2"
       >
-        <fish-list-item
-          :item="item"
-          :hide-margin="hideMargin"
-          :show-bookmark="showBookmark"
-        />
+        <fish-list-item :item="item" :hide-margin="hideMargin" />
       </v-col>
     </v-row>
   </v-container>
@@ -27,7 +23,6 @@ export default {
   data: () => ({
     label: 'Cari Bookmark',
     hideMargin: true,
-    showBookmark: true,
     bookmark: [],
     page: 'bookmark',
   }),
@@ -52,7 +47,7 @@ export default {
             if (key === 'nama_produk') {
               if (
                 item[key] === undefined ||
-                item[key]
+                !item[key]
                   .toLowerCase()
                   .includes(query[key].split('_').join(' ').toLowerCase())
               ) {

@@ -80,7 +80,7 @@ export default {
     handleSearchFish() {
       this.handleConvertCategory()
       return this.$router.push(
-        `/kategori?harga=${this.price}&kuantitas=${this.quantity}&jenis=${this.category}`
+        `/kategori?harga=${this.price}&stok=${this.quantity}&jenis=${this.category}`
       )
     },
   },

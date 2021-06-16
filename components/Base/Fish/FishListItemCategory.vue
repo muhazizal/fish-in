@@ -8,13 +8,12 @@
           :src="item.img"
         />
       </v-col>
-      <v-col cols="7" class="d-flex align-start" style="width: 100%">
+      <v-col cols="4" class="d-flex align-start" style="width: 100%">
         <div>
           <v-card-title
             class="pa-0 text-subtitle-1 d-flex justify-space-between"
           >
             {{ item.nama_produk }}
-            <v-icon v-if="showBookmark" color="#5BC695"> mdi-bookmark </v-icon>
           </v-card-title>
           <span
             v-if="!item.harga_diskon"
@@ -39,12 +38,54 @@
           />
         </div>
       </v-col>
-      <v-col cols="1" class="d-flex align-center">
-        <v-icon color="primary" @click="handleShowDialogProduct">
+      <v-col cols="4" class="d-flex justify-end align-center">
+        <v-icon
+          v-show="isEdit"
+          color="red lighten-2"
+          :disabled="inputQuantity < 1"
+          @click="handleMinusItem"
+        >
+          mdi-minus-circle-outline
+        </v-icon>
+        <v-text-field
+          v-show="isEdit"
+          v-model="inputQuantity"
+          type="number"
+          width="10px"
+          readonly
+          style="max-width: 10px; margin: 0 12px"
+        ></v-text-field>
+        <v-icon color="primary" @click="handleAddItem">
           mdi-plus-circle-outline
+        </v-icon>
+        <v-icon
+          v-show="isEdit"
+          color="red"
+          class="ml-3"
+          @click="handleDeleteItem"
+        >
+          mdi-delete-outline
         </v-icon>
       </v-col>
     </v-row>
+    <v-snackbar
+      v-model="showAlertSuccess"
+      bottom
+      color="success"
+      timeout="3000"
+      class="font-weight-bold"
+    >
+      Success
+    </v-snackbar>
+    <v-snackbar
+      v-model="showAlertFailed"
+      bottom
+      color="error"
+      timeout="3000"
+      class="font-weight-bold"
+    >
+      Failed
+    </v-snackbar>
   </div>
 </template>
 
@@ -57,10 +98,17 @@ export default {
       type: Object,
       default: () => {},
     },
+    isEdit: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
-      showBookmark: true,
+      inputQuantity: 0,
+      userToken: '',
+      showAlertSuccess: false,
+      showAlertFailed: false,
     }
   },
   computed: {
@@ -77,12 +125,49 @@ export default {
         : 'text-subtitle-2'
     },
     getRating() {
-      return 4
+      return this.item.bintang
     },
   },
+  created() {
+    this.userToken = this.$cookies.get('auth_token')
+  },
+  mounted() {
+    // this.inputQuantity = this.item.quantity
+  },
   methods: {
-    handleShowDialogProduct() {
-      console.log('dialog')
+    handleMinusItem() {
+      if (this.inputQuantity > 0) {
+        this.inputQuantity--
+      }
+    },
+    async handleAddItem() {
+      if (this.isEdit) {
+        this.inputQuantity++
+      } else {
+        try {
+          const response = await this.$axios.post(
+            '/api/cart',
+            {
+              id: this.item.id_penyimpanan,
+            },
+            {
+              headers: {
+                authorization: this.userToken,
+              },
+            }
+          )
+          console.log('Response addItem:', response)
+          if (response) {
+            this.showAlertSuccess = true
+          }
+        } catch (error) {
+          console.log('Error addProduct: ', error)
+          this.showAlertFailed = true
+        }
+      }
+    },
+    handleDeleteItem() {
+      //
     },
   },
 }

@@ -4,6 +4,7 @@
       v-for="item in items"
       :key="item.id"
       :item="item"
+      :is-edit="isEdit"
     />
   </div>
 </template>
@@ -19,6 +20,10 @@ export default {
     items: {
       type: Array,
       default: () => [],
+    },
+    isEdit: {
+      type: Boolean,
+      default: false,
     },
   },
 }

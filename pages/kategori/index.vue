@@ -40,7 +40,7 @@ export default {
       if (query) {
         const filteredFishList = this.fishList.filter((fish) => {
           for (const key in query) {
-            if (key === 'harga' || key === 'kuantitas') {
+            if (key === 'harga' || key === 'stok') {
               query[key] = parseInt(query[key])
               if (fish[key] === undefined || fish[key] < query[key]) {
                 return false

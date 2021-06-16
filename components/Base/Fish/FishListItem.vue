@@ -37,6 +37,24 @@
         Penjual: {{ item.nama_penjual }}
       </v-card-subtitle>
     </v-card>
+    <v-snackbar
+      v-model="showAlertSuccess"
+      bottom
+      color="success"
+      timeout="3000"
+      class="font-weight-bold"
+    >
+      Success
+    </v-snackbar>
+    <v-snackbar
+      v-model="showAlertFailed"
+      bottom
+      color="error"
+      timeout="3000"
+      class="font-weight-bold"
+    >
+      Failed
+    </v-snackbar>
   </div>
 </template>
 <script>
@@ -52,6 +70,12 @@ export default {
       type: Boolean,
       default: false,
     },
+  },
+  data() {
+    return {
+      showAlertSuccess: false,
+      showAlertFailed: false,
+    }
   },
   computed: {
     convertedPrice() {
@@ -76,7 +100,7 @@ export default {
       return 'grey lighten-1'
     },
     getRating() {
-      return 4
+      return this.item.bintang
     },
   },
   methods: {
@@ -84,7 +108,7 @@ export default {
       try {
         const userToken = this.$cookies.get('auth_token')
         let response
-        if (!status) {
+        if (!this.item.status) {
           response = await this.$axios.post(
             '/api/bookmark',
             {
@@ -101,7 +125,7 @@ export default {
             '/api/bookmark',
             {
               id,
-              status: false,
+              status_bookmark: false,
             },
             {
               headers: {
@@ -112,9 +136,11 @@ export default {
         }
         console.log('Response bookmarkFish: ', response)
         if (response) {
-          await this.dispatch('fish/fishList')
+          this.showAlertSuccess = true
+          await this.$store.dispatch('fish/fishList')
         }
       } catch (error) {
+        this.showAlertFailed = true
         console.log('Error bookmarkFish: ', error)
       }
     },
