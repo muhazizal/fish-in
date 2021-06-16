@@ -8,7 +8,11 @@
         cols="12"
         class="px-2 py-2"
       >
-        <fish-list-item :item="item" :hide-margin="hideMargin" />
+        <fish-list-item
+          :item="item"
+          :hide-margin="hideMargin"
+          @handle-get-bookmark="getBookmark"
+        />
       </v-col>
     </v-row>
   </v-container>

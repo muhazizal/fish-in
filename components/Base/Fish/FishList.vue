@@ -8,6 +8,7 @@
         v-for="(item, index) in items"
         :key="index"
         :item="item"
+        @handle-get-bookmark="getBookmark"
       />
     </div>
   </v-container>
@@ -26,6 +27,11 @@ export default {
     items: {
       type: Array,
       default: () => [],
+    },
+  },
+  methods: {
+    getBookmark() {
+      this.$emit('handle-get-bookmark')
     },
   },
 }

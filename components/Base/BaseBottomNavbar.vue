@@ -44,11 +44,11 @@ export default {
         link: '/pesanan',
         icon: 'mdi-shopping',
       },
-      {
-        name: 'Obrolan',
-        link: '/obrolan',
-        icon: 'mdi-message',
-      },
+      // {
+      //   name: 'Obrolan',
+      //   link: '/obrolan',
+      //   icon: 'mdi-message',
+      // },
       {
         name: 'Profil',
         link: '/profil',

@@ -104,40 +104,46 @@ export default {
     },
   },
   methods: {
+    async getBookmark() {
+      try {
+        const userToken = this.$cookies.get('auth_token')
+        const response = await this.$axios.get('/api/bookmark', {
+          headers: {
+            authorization: userToken,
+          },
+        })
+        console.log('Response getBookmark: ', response)
+        if (response) {
+          this.bookmark = response.data.data
+        }
+      } catch (error) {
+        console.log('Error getBookmark: ', error)
+      }
+    },
     async handleBookmarkFish(id) {
       try {
         const userToken = this.$cookies.get('auth_token')
-        let response
-        if (!this.item.status) {
-          response = await this.$axios.post(
-            '/api/bookmark',
-            {
-              id,
+        const response = await this.$axios.post(
+          '/api/bookmark',
+          {
+            id,
+            status_bookmark: !this.item.status,
+          },
+          {
+            headers: {
+              authorization: userToken,
             },
-            {
-              headers: {
-                authorization: userToken,
-              },
-            }
-          )
-        } else {
-          response = await this.$axios.put(
-            '/api/bookmark',
-            {
-              id,
-              status_bookmark: false,
-            },
-            {
-              headers: {
-                authorization: userToken,
-              },
-            }
-          )
-        }
+          }
+        )
         console.log('Response bookmarkFish: ', response)
         if (response) {
           this.showAlertSuccess = true
-          await this.$store.dispatch('fish/fishList')
+          const { name } = this.$route
+          if (name === 'bookmark') {
+            this.$emit('handle-get-bookmark')
+          } else {
+            await this.$store.dispatch('fish/fishList')
+          }
         }
       } catch (error) {
         this.showAlertFailed = true
