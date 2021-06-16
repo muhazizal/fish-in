@@ -5,7 +5,12 @@
         <h3 class="mt-2">ID Pesanan : OXO0912XAS</h3>
       </div>
       <div class="d-flex">
-        <v-btn class="mx-auto" depressed color="primary">
+        <v-btn
+          class="mx-auto"
+          depressed
+          color="primary"
+          @click="handleRedirectDetailPesanan"
+        >
           Detail Pesanan
         </v-btn>
       </div>
@@ -16,6 +21,11 @@
 <script>
 export default {
   name: 'FishListPesanan',
+  methods: {
+    handleRedirectDetailPesanan() {
+      this.$router.push(`/pesanan-detail`)
+    },
+  },
 }
 </script>
 

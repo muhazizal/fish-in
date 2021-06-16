@@ -166,8 +166,27 @@ export default {
         }
       }
     },
-    handleDeleteItem() {
-      //
+    async handleDeleteItem() {
+      try {
+        const response = await this.$axios.delete(
+          '/api/cart',
+          {
+            id: this.item.id_penyimpanan,
+          },
+          {
+            headers: {
+              authorization: this.userToken,
+            },
+          }
+        )
+        console.log('Response deleteItem:', response)
+        if (response) {
+          this.showAlertSuccess = true
+        }
+      } catch (error) {
+        this.showAlertFailed = true
+        console.log('Error deleteItem:', error)
+      }
     },
   },
 }

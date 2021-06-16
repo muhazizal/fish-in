@@ -26,7 +26,13 @@
         </div>
       </div>
       <div class="d-flex">
-        <v-btn small depressed class="mx-auto mt-5" color="primary">
+        <v-btn
+          small
+          depressed
+          class="mx-auto mt-5"
+          color="primary"
+          @click="handleRedirectReviewProduk"
+        >
           Review Produk
         </v-btn>
       </div>
@@ -47,6 +53,11 @@ export default {
   computed: {
     convertedHargaIkan() {
       return rupiahCurrency(this.item.hargaIkan, 0, 'Rp.', '.')
+    },
+  },
+  methods: {
+    handleRedirectReviewProduk() {
+      this.$router.push('/review')
     },
   },
 }

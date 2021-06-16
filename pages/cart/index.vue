@@ -16,6 +16,7 @@ export default {
   },
   data() {
     return {
+      userToken: '',
       items: [
         {
           harga: 25000,
@@ -45,14 +46,32 @@ export default {
     }
   },
   async created() {
+    this.userToken = this.$cookies.get('auth_token')
     await this.handleGetCart()
   },
   methods: {
     async handleGetCart() {
-      //
+      try {
+        const response = await this.$axios.get('/api/cart', {
+          headers: {
+            authorization: this.userToken,
+          },
+        })
+        console.log('Response getCart: ', response)
+        if (response) {
+          // this.items = response.data
+        }
+      } catch (error) {
+        console.log('Error getCart: ', error)
+      }
     },
     async handleCheckoutCart() {
-      //
+      try {
+        const response = await this.$axios.post()
+        console.log(response)
+      } catch (error) {
+        console.log('Error checkoutCart:', error)
+      }
     },
   },
 }

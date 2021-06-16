@@ -43,7 +43,7 @@
       >
         {{ getNameMethodPembeli }}
       </v-btn>
-      <v-btn
+      <!-- <v-btn
         width="100%"
         :loading="loadingApp"
         :disabled="loadingApp"
@@ -53,12 +53,12 @@
         @click="handleDispatchAuthPenjual"
       >
         {{ getNameMethodPenjual }}
-      </v-btn>
+      </v-btn> -->
     </v-container>
 
     <div class="text-center my-1 d-flex align-center">
       <v-divider></v-divider>
-      <p class="font-weight-light grey--text ma-0">Belum punya akun?</p>
+      <p class="font-weight-light grey--text ma-0">{{ getCheckAccount }}</p>
       <v-divider></v-divider>
     </div>
 
@@ -127,6 +127,11 @@ export default {
     },
     getSubtitle() {
       return this.page && this.page === 'login' ? 'Login' : 'Register'
+    },
+    getCheckAccount() {
+      return this.page && this.page === 'login'
+        ? 'Belum punya akun?'
+        : 'Sudah punya akun?'
     },
   },
   created() {
