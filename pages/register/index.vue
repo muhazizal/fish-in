@@ -38,12 +38,8 @@ export default {
     handleChangePassword(value) {
       this.password = value
     },
-    async handleRegisterAccount() {
+    async handleRegisterAccount(params) {
       this.loadingApp = true
-      const params = {
-        email: this.email,
-        password: this.password,
-      }
       await this.$store.dispatch('account/registerAccount', params)
       this.loadingApp = false
     },

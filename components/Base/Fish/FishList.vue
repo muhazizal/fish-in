@@ -8,6 +8,7 @@
         v-for="(item, index) in items"
         :key="index"
         :item="item"
+        show-bookmark
       />
     </div>
   </v-container>

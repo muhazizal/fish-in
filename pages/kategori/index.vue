@@ -1,6 +1,6 @@
 <template>
   <div>
-    <base-search class="mb-4" :label="searchLabel" />
+    <base-search class="mb-4" :label="searchLabel" :page="page" />
     <fish-list-category :items="filteredFishList" />
   </div>
 </template>
@@ -16,6 +16,7 @@ export default {
   data() {
     return {
       searchLabel: 'Cari Ikan',
+      page: 'kategori',
     }
   },
   head() {
@@ -36,7 +37,6 @@ export default {
     }),
     filteredFishList() {
       const { query } = this.$route
-      console.log('query: ', query)
       if (query) {
         const filteredFishList = this.fishList.filter((fish) => {
           for (const key in query) {
@@ -54,8 +54,9 @@ export default {
             if (key === 'nama_produk') {
               if (
                 fish[key] === undefined ||
-                fish[key].toLowerCase() !==
-                  query[key].split('_').join(' ').toLowerCase()
+                !fish[key]
+                  .toLowerCase()
+                  .includes(query[key].split('_').join(' ').toLowerCase())
               ) {
                 return false
               }

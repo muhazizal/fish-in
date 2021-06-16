@@ -22,6 +22,10 @@ export default {
       type: String,
       default: '',
     },
+    page: {
+      type: String,
+      default: '',
+    },
   },
   data: () => ({
     search: '',
@@ -31,13 +35,13 @@ export default {
       event.preventDefault()
       if (this.search) {
         return this.$router.push(
-          `/kategori?nama_produk=${this.search
+          `/${this.page}?nama_produk=${this.search
             .toLowerCase()
             .split(' ')
             .join('_')}`
         )
       }
-      return this.$router.push('/kategori')
+      return this.$router.push(`/${this.page}`)
     },
   },
 }

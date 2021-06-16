@@ -51,7 +51,8 @@ export default {
   },
   methods: {
     async handleGetAccount() {
-      await this.$store.dispatch('account/account')
+      const role = 'pembeli'
+      await this.$store.dispatch('account/account', role)
     },
   },
 }

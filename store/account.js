@@ -11,9 +11,16 @@ export const mutations = {
 }
 export const actions = {
   async registerAccount({ dispatch }, params) {
+    const data = {
+      email: params.email,
+      password: params.password,
+    }
     try {
       console.log('Params registerAccount: ', params)
-      const response = await this.$axios.$post('/api/pembeli/register/', params)
+      const response = await this.$axios.$post(
+        `/api/${params.role}/register/`,
+        data
+      )
       console.log('Response registerAccount: ', response)
       if (response) {
         await dispatch('loginAccount', params)
@@ -23,9 +30,16 @@ export const actions = {
     }
   },
   async loginAccount({ commit }, params) {
+    const data = {
+      email: params.email,
+      password: params.password,
+    }
     try {
       console.log('Params loginAccount: ', params)
-      const response = await this.$axios.$post('/api/pembeli/login/', params)
+      const response = await this.$axios.$post(
+        `/api/${params.role}/login/`,
+        data
+      )
       console.log('Response loginAccount: ', response)
       if (response) {
         const { data, token } = response
@@ -34,17 +48,21 @@ export const actions = {
             secure: true,
           })
           commit('SET_ACCOUNT', data)
-          this.$router.push('/')
+          if (params.role === 'pembeli') {
+            this.$router.push('/')
+          } else {
+            this.$router.push('/penjual')
+          }
         }
       }
     } catch (error) {
       console.log(error)
     }
   },
-  async account({ commit }) {
+  async account({ commit }, role) {
     try {
       const userToken = this.$cookies.get('auth_token')
-      const response = await this.$axios.get(`/api/pembeli`, {
+      const response = await this.$axios.get(`/api/${role}`, {
         headers: {
           authorization: userToken,
         },

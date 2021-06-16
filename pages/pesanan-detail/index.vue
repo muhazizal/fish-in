@@ -10,7 +10,6 @@ export default {
   components: {
     FishDetailPesanan: () => import('@/components/Base/Fish/FishDetailPesanan'),
   },
-
   head() {
     return {
       title: 'Detail Pesanan',
